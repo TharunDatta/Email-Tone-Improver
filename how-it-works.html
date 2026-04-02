@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>How It Works - Ethereal Tone</title>
+<meta name="description" content="Discover how Ethereal Tone's AI-powered editorial engine analyzes and rewrites your emails with semantic precision across 12 distinct tone profiles."/>
+<meta property="og:title" content="How It Works | Ethereal Tone"/>
+<meta property="og:description" content="AI-driven tone analysis and editorial refinement for professional email communication."/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Ethereal Tone"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-fixed": "#69f6b8",
+                        "background": "#060e20",
+                        "on-tertiary-container": "#1f0001",
+                        "outline": "#6d758c",
+                        "on-surface": "#dee5ff",
+                        "on-primary-container": "#002919",
+                        "surface-bright": "#1f2b49",
+                        "secondary-container": "#795900",
+                        "on-error": "#490006",
+                        "surface-container-low": "#091328",
+                        "tertiary-container": "#fd4e4d",
+                        "on-primary": "#005a3c",
+                        "tertiary-fixed": "#ff928b",
+                        "on-secondary": "#563e00",
+                        "on-secondary-fixed": "#443100",
+                        "error-dim": "#d7383b",
+                        "primary-container": "#06b77f",
+                        "primary": "#69f6b8",
+                        "secondary": "#fcc025",
+                        "on-secondary-container": "#fff6ed",
+                        "on-error-container": "#ffa8a3",
+                        "error": "#ff716c",
+                        "surface-container-highest": "#192540",
+                        "tertiary-dim": "#ff716a",
+                        "surface-container": "#0f1930",
+                        "on-primary-fixed-variant": "#006544",
+                        "tertiary-fixed-dim": "#ff7b74",
+                        "secondary-fixed": "#ffca51",
+                        "primary-fixed-dim": "#58e7ab",
+                        "surface": "#060e20",
+                        "secondary-dim": "#edb210",
+                        "secondary-fixed-dim": "#f6ba1e",
+                        "surface-dim": "#060e20",
+                        "on-surface-variant": "#a3aac4",
+                        "surface-variant": "#192540",
+                        "on-tertiary-fixed": "#3a0003",
+                        "inverse-surface": "#faf8ff",
+                        "inverse-on-surface": "#4d556b",
+                        "inverse-primary": "#006d4a",
+                        "surface-container-lowest": "#000000",
+                        "on-tertiary-fixed-variant": "#79000e",
+                        "on-secondary-fixed-variant": "#684c00",
+                        "on-tertiary": "#490005",
+                        "primary-dim": "#58e7ab",
+                        "tertiary": "#ff716a",
+                        "error-container": "#9f0519",
+                        "surface-tint": "#69f6b8",
+                        "on-primary-fixed": "#00452d",
+                        "surface-container-high": "#141f38",
+                        "outline-variant": "#40485d",
+                        "on-background": "#dee5ff"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #060e20;
+            color: #dee5ff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(15, 25, 48, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .glow-primary {
+            box-shadow: 0 0 20px rgba(105, 246, 184, 0.15);
+        }
+        .editorial-gradient {
+            background: linear-gradient(180deg, rgba(105, 246, 184, 0.05) 0%, rgba(6, 14, 32, 0) 100%);
+        }
+        .text-glow {
+            text-shadow: 0 0 15px rgba(105, 246, 184, 0.3);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur-md bg-opacity-80 bg-[#060e20]">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<a href="index.html" class="text-xl font-bold tracking-tight text-[#69f6b8] font-headline">Ethereal Tone</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors text-sm font-body" href="index.html">Home</a>
+<a class="text-[#69f6b8] font-semibold border-b border-[#69f6b8] pb-1 text-sm font-body" href="how-it-works.html">How It Works</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors text-sm font-body" href="privacy-policy.html">Privacy</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors text-sm font-body" href="terms.html">Terms</a>
+</div>
+<div class="flex items-center gap-4">
+<button onclick="window.location.href='editor.html'" class="bg-[#06b77f] text-[#002919] px-6 py-2 rounded-xl text-sm font-bold hover:scale-95 active:scale-90 transition-transform glow-primary">
+                    Try AI Editor
+                </button>
+</div>
+</div>
+<div class="bg-gradient-to-r from-transparent via-[#40485d]/15 to-transparent h-[1px] w-full absolute bottom-0"></div>
+</nav>
+<!-- Hero Section -->
+<main class="pt-32 pb-20 px-6 max-w-7xl mx-auto w-full relative">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full editorial-gradient pointer-events-none"></div>
+<header class="text-center mb-24 relative">
+<p class="font-label text-primary tracking-widest mb-4">ENGINEERED EMPATHY</p>
+<h1 class="text-5xl md:text-7xl font-headline font-light tracking-tight mb-6 leading-tight">
+                Refining Human <span class="text-primary italic">Connection</span><br/>with Editorial Precision.
+            </h1>
+<p class="max-w-2xl mx-auto text-on-surface-variant text-lg leading-relaxed font-body">
+                Ethereal Tone is more than just an AI. It's a high-end editorial studio that analyzes the emotional resonance of your communications and enhances them for maximum impact.
+            </p>
+</header>
+<!-- Process Section (Bento Grid) -->
+<section class="mb-32">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Step 1: Input -->
+<div class="md:col-span-4 glass-panel rounded-xl p-8 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 1;">input</span>
+</div>
+<div class="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">edit_note</span>
+</div>
+<p class="font-label text-on-surface-variant mb-2">PHASE 01</p>
+<h3 class="text-2xl font-headline font-semibold mb-4 text-white">Input Intent</h3>
+<p class="text-on-surface-variant font-body leading-relaxed">
+                        Paste your draft. Whether it's a quick Slack message or a critical board-level email, our system accepts all forms of text.
+                    </p>
+</div>
+<!-- Step 2: Analyze -->
+<div class="md:col-span-4 glass-panel rounded-xl p-8 bg-surface-container-high border-t border-primary/20 relative overflow-hidden">
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/5 blur-3xl rounded-full"></div>
+<div class="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<p class="font-label text-primary mb-2">PHASE 02</p>
+<h3 class="text-2xl font-headline font-semibold mb-4 text-white">Semantic Analysis</h3>
+<p class="text-on-surface-variant font-body leading-relaxed">
+                        The AI scans for emotional triggers, authority levels, and passive-aggressive undertones, mapping your content across 12 distinct tone signatures.
+                    </p>
+</div>
+<!-- Step 3: Improve -->
+<div class="md:col-span-4 glass-panel rounded-xl p-8 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div class="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary">auto_fix_high</span>
+</div>
+<p class="font-label text-on-surface-variant mb-2">PHASE 03</p>
+<h3 class="text-2xl font-headline font-semibold mb-4 text-white">Editorial Refinement</h3>
+<p class="text-on-surface-variant font-body leading-relaxed">
+                        Choose your target resonance. The AI rewrites your message while preserving your unique voice and ensuring professional excellence.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Use Cases (Asymmetric Layout) -->
+<section class="mb-32">
+<div class="flex flex-col md:flex-row items-center gap-16">
+<div class="w-full md:w-1/2">
+<p class="font-label text-secondary tracking-widest mb-4">VERSATILITY</p>
+<h2 class="text-4xl font-headline font-light mb-8 leading-tight">Master every <span class="text-secondary italic">social context</span> with surgical precision.</h2>
+<div class="space-y-8">
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-1 bg-gradient-to-b from-primary to-transparent"></div>
+<div>
+<h4 class="text-xl font-headline font-medium text-white mb-2">Strategic Business</h4>
+<p class="text-on-surface-variant font-body">Navigate corporate politics with a balance of authority and collaboration. Ensure your leadership is felt, not forced.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-1 bg-gradient-to-b from-secondary to-transparent"></div>
+<div>
+<h4 class="text-xl font-headline font-medium text-white mb-2">High-Stakes Sales</h4>
+<p class="text-on-surface-variant font-body">Craft persuasive narratives that build trust without appearing aggressive. Increase conversion through genuine tonal alignment.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="flex-shrink-0 w-1 bg-gradient-to-b from-tertiary to-transparent"></div>
+<div>
+<h4 class="text-xl font-headline font-medium text-white mb-2">Personal Diplomacy</h4>
+<p class="text-on-surface-variant font-body">Address sensitive family or social matters with grace. Avoid misunderstandings caused by unintended digital sharpness.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 h-[500px] rounded-xl overflow-hidden glass-panel relative group">
+<img class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="Modern high-end creative studio office with dark aesthetic, large monitors showing data visualizations and soft ambient neon lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLCkW0knS_dz99y9Ek9Hu91hpN70OIAguHKLdyw10d7GJMojxfNehH_-SF-Ws1E50HuBkwHAj9gr3Q6Ek0Dpar4_jJZ_AGnX2qZeLnNzD_haq8kBCiPsn_YUfTNbTkoYwaCBYpte4hnPx7JVctbApWiySk8T5PxWiRLyCJuR6ioFi4ZwHEdJhvZyEqFosW_uSYE5KuAQZDzrhD5--CSuqN-_rqj3PEisLwyymjtYB2IQ1BZ035jUfTF6FMm_K_innl8XNRW8ufOTZZ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8 p-6 glass-panel rounded-lg border border-white/5">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-xs font-label text-primary">LIVE ANALYSIS ACTIVE</span>
+</div>
+<p class="text-white font-headline text-lg">"Your reply to the board is currently 82% Authoritative. We recommend adding 15% Collaboration to ensure alignment."</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Advantages (Grid with Glows) -->
+<section class="mb-32">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-headline font-light">Why Curate Your Digital Voice?</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="p-8 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors group">
+<span class="material-symbols-outlined text-primary-fixed mb-6 block text-4xl">trending_up</span>
+<h3 class="text-xl font-headline font-semibold mb-3 text-white">Better Response Rates</h3>
+<p class="text-on-surface-variant font-body text-sm leading-relaxed">Messages that are tonally optimized receive 40% higher engagement. People respond to clarity and emotional intelligence.</p>
+</div>
+<div class="p-8 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors group">
+<span class="material-symbols-outlined text-secondary mb-6 block text-4xl">verified_user</span>
+<h3 class="text-xl font-headline font-semibold mb-3 text-white">Crystal Clear Messaging</h3>
+<p class="text-on-surface-variant font-body text-sm leading-relaxed">Eliminate "the digital gap." Ensure that what you write is exactly what the recipient perceives, every single time.</p>
+</div>
+<div class="p-8 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors group">
+<span class="material-symbols-outlined text-tertiary mb-6 block text-4xl">military_tech</span>
+<h3 class="text-xl font-headline font-semibold mb-3 text-white">Professional Impact</h3>
+<p class="text-on-surface-variant font-body text-sm leading-relaxed">Establish an undeniable presence. Elevate your status from a participant to a curator of executive-level communication.</p>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="glass-panel rounded-2xl p-12 text-center border border-primary/10 relative overflow-hidden">
+<div class="absolute -top-24 -left-24 w-64 h-64 bg-primary/10 blur-[100px] rounded-full"></div>
+<div class="absolute -bottom-24 -right-24 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full"></div>
+<h2 class="text-4xl font-headline font-light mb-6 relative z-10">Ready to <span class="text-primary">Evolve</span> Your Communication?</h2>
+<p class="text-on-surface-variant max-w-xl mx-auto mb-10 relative z-10">Experience the difference editorial intelligence makes in your daily workflow. Start your journey with Ethereal Tone today.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+<button onclick="window.location.href='editor.html'" class="bg-[#06b77f] text-[#002919] px-10 py-4 rounded-xl text-md font-bold hover:scale-95 active:scale-90 transition-transform glow-primary">
+                    Launch AI Editor
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 mt-auto bg-[#091328] border-t border-[#40485d]/10">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 gap-6 max-w-7xl mx-auto">
+<a href="index.html" class="text-lg font-bold text-[#a3aac4] font-headline">Ethereal Tone</a>
+<div class="flex gap-8 text-sm font-medium text-[#a3aac4] font-body">
+<a class="hover:text-white transition-colors opacity-80 hover:opacity-100" href="privacy-policy.html">Privacy Policy</a>
+<a class="hover:text-white transition-colors opacity-80 hover:opacity-100" href="terms.html">Terms of Service</a>
+</div>
+<div class="text-sm font-medium text-[#a3aac4] font-body">
+                © 2026 Ethereal Tone AI. Editorial Excellence Guaranteed.
+            </div>
+</div>
+</footer>
+</body></html>

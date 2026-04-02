@@ -1,0 +1,9 @@
+{
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/editor", "dest": "/editor.html" },
+    { "src": "/how-it-works", "dest": "/how-it-works.html" },
+    { "src": "/privacy-policy", "dest": "/privacy-policy.html" },
+    { "src": "/terms", "dest": "/terms.html" }
+  ]
+}

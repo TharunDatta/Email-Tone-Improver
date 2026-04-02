@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ethereal Tone | Master Your Message</title>
+<meta name="description" content="Ethereal Tone uses AI to rewrite your emails in 12 professional tones — from Formal to Friendly. Eliminate misinterpretation and communicate with precision."/>
+<meta property="og:title" content="Ethereal Tone | Master Your Message"/>
+<meta property="og:description" content="AI-powered email tone improver. Rewrite any email in 12 distinct tones in seconds."/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Ethereal Tone"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface": "#060e20",
+              "error": "#ff716c",
+              "secondary-dim": "#edb210",
+              "surface-bright": "#1f2b49",
+              "on-surface": "#dee5ff",
+              "secondary-fixed-dim": "#f6ba1e",
+              "on-tertiary-container": "#1f0001",
+              "primary-fixed-dim": "#58e7ab",
+              "surface-container-high": "#141f38",
+              "inverse-surface": "#faf8ff",
+              "on-primary-container": "#002919",
+              "primary-container": "#06b77f",
+              "on-secondary": "#563e00",
+              "on-secondary-fixed-variant": "#684c00",
+              "surface-tint": "#69f6b8",
+              "secondary": "#fcc025",
+              "surface-variant": "#192540",
+              "on-background": "#dee5ff",
+              "surface-container": "#0f1930",
+              "on-secondary-fixed": "#443100",
+              "on-primary-fixed-variant": "#006544",
+              "outline": "#6d758c",
+              "on-tertiary": "#490005",
+              "tertiary-fixed": "#ff928b",
+              "secondary-container": "#795900",
+              "on-error": "#490006",
+              "inverse-primary": "#006d4a",
+              "inverse-on-surface": "#4d556b",
+              "secondary-fixed": "#ffca51",
+              "surface-container-lowest": "#000000",
+              "tertiary-dim": "#ff716a",
+              "surface-dim": "#060e20",
+              "on-error-container": "#ffa8a3",
+              "on-secondary-container": "#fff6ed",
+              "tertiary": "#ff716a",
+              "primary": "#69f6b8",
+              "primary-dim": "#58e7ab",
+              "surface-container-highest": "#192540",
+              "on-tertiary-fixed-variant": "#79000e",
+              "surface-container-low": "#091328",
+              "on-surface-variant": "#a3aac4",
+              "on-primary-fixed": "#00452d",
+              "tertiary-fixed-dim": "#ff7b74",
+              "primary-fixed": "#69f6b8",
+              "background": "#060e20",
+              "tertiary-container": "#fd4e4d",
+              "on-tertiary-fixed": "#3a0003",
+              "error-container": "#9f0519",
+              "error-dim": "#d7383b",
+              "outline-variant": "#40485d",
+              "on-primary": "#005a3c"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(25, 37, 64, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .text-glow {
+            text-shadow: 0 0 15px rgba(105, 246, 184, 0.4);
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 25px rgba(105, 246, 184, 0.4);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .gradient-border-bottom {
+            background-image: linear-gradient(90deg, transparent, #40485d 50%, transparent);
+            height: 1px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#060e20]/80 backdrop-blur-xl no-line-rule bg-[#091328]/50">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<a href="index.html" class="text-xl font-bold tracking-tighter text-[#69f6b8] font-manrope">
+                Ethereal Tone
+            </a>
+<div class="hidden md:flex gap-10 items-center font-manrope tracking-tight">
+<a class="text-[#69f6b8] font-semibold border-b-2 border-[#69f6b8] pb-1 transition-all duration-300" href="index.html">Home</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors transition-all duration-300" href="how-it-works.html">How it works</a>
+</div>
+<button onclick="window.location.href='editor.html'" class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-bold hover:scale-95 duration-200 ease-in-out btn-glow">
+                Get Started
+            </button>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative pt-40 pb-20 px-8 overflow-hidden">
+<!-- Background Ambient Glows -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/10 rounded-full blur-[120px] -z-10"></div>
+<div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-tertiary/5 rounded-full blur-[100px] -z-10"></div>
+<div class="max-w-6xl mx-auto text-center space-y-8">
+
+<h1 class="font-headline text-5xl md:text-7xl font-light tracking-tight leading-[1.1] max-w-4xl mx-auto">
+                Master Your Message: The <span class="text-primary italic font-bold text-glow">Email Tone</span> Improver
+            </h1>
+<!-- Animated Typing Mockup -->
+<div class="relative max-w-2xl mx-auto mt-12 group">
+<div class="glass-panel p-8 rounded-xl border border-outline-variant/15 text-left shadow-2xl">
+<div class="flex gap-2 mb-6">
+<div class="w-3 h-3 rounded-full bg-error/40"></div>
+<div class="w-3 h-3 rounded-full bg-secondary/40"></div>
+<div class="w-3 h-3 rounded-full bg-primary/40"></div>
+</div>
+<div class="space-y-4">
+<div class="text-on-surface-variant font-medium opacity-50">Subject: Strategy for Q4...</div>
+<div class="h-24 font-headline text-2xl flex items-center gap-1">
+<span>Adjusting to </span>
+<span class="text-primary border-r-2 border-primary pr-1 animate-pulse">Professional...</span>
+</div>
+</div>
+</div>
+<!-- Floating Tone Chip -->
+<div class="absolute -right-6 -bottom-6 bg-surface-bright/80 backdrop-blur-xl p-4 rounded-xl border border-outline-variant/15 shadow-xl hidden md:block">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<div>
+<div class="text-[10px] uppercase font-label tracking-tighter text-on-surface-variant">Tone Resonance</div>
+<div class="text-lg font-headline font-bold text-primary">98.4% Match</div>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-12">
+<button onclick="window.location.href='editor.html'" class="bg-primary-container text-on-primary-container px-10 py-5 rounded-full text-xl font-headline font-bold btn-glow transition-all hover:scale-105 active:scale-95">
+                    Improve Your Email Tone
+                </button>
+</div>
+</div>
+</section>
+<!-- Feature Slider (Bento Grid Style) -->
+<section class="py-24 px-8 max-w-7xl mx-auto">
+<div class="mb-16">
+<h2 class="font-headline text-3xl font-medium mb-2">Curated Intelligence</h2>
+<div class="w-24 h-1 bg-primary rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
+<!-- Tone Analysis (Main Feature) -->
+<div class="md:col-span-8 glass-panel rounded-2xl p-10 flex flex-col justify-between group overflow-hidden relative border border-outline-variant/10">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-4xl text-primary mb-6 block">psychology</span>
+<h3 class="font-headline text-3xl font-bold mb-4">Deep Tone Analysis</h3>
+<p class="text-on-surface-variant text-lg max-w-md">Our AI decodes the emotional subtext of your emails, identifying friction points before you hit send.</p>
+</div>
+<div class="absolute right-0 bottom-0 w-1/2 h-2/3 p-4 translate-y-10 group-hover:translate-y-0 transition-transform duration-500">
+<img class="w-full h-full object-cover rounded-tl-3xl border-t border-l border-outline-variant/20 shadow-2xl" data-alt="Abstract 3D representation of data visualization with flowing neon green lines and spheres on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv2gLvDbE2l8XKXE8IIbSDsNySvNSpthZbHI7UDMm6mUGb4fBQtTTqybMBUxnyQTse7UNTzB5W22zddBIYJKaWJ3cdwKtphwgJrfCk6aXIvTfImazVtcLlAkD5R-QqYpTtyK1tBynHsjeHuTHKUHjJvWujWuBWkdTbJ95USzI9ni2UIsaIvueeMpoveAEsMkZV8TALtWaeDsZVpvgF-kOMIM57v96_tDBzatfY4HHJV-S3uuKnOFcK948eS7edwyX8RpCXWU-h2OeQ"/>
+</div>
+</div>
+<!-- AI Rewriting -->
+<div class="md:col-span-4 bg-surface-container rounded-2xl p-10 flex flex-col border border-outline-variant/10 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-4xl text-secondary mb-6 block">draw</span>
+<h3 class="font-headline text-2xl font-bold mb-4">AI Rewriting</h3>
+<p class="text-on-surface-variant">Instant architectural refinement. We don't just fix grammar; we restructure your intent.</p>
+<div class="mt-auto pt-8">
+<div class="space-y-2">
+<div class="h-1.5 w-full bg-outline-variant/20 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-3/4"></div>
+</div>
+<div class="flex justify-between text-[10px] font-label text-on-surface-variant uppercase tracking-widest">
+<span>Precision</span>
+<span>75%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 12 Target Tones (Bento Grid Bottom) -->
+<div class="md:col-span-4 bg-surface-container-low rounded-2xl p-10 border border-outline-variant/10 flex flex-col justify-center items-center text-center">
+<div class="grid grid-cols-4 gap-3 mb-6">
+<div class="w-8 h-8 rounded-full bg-primary/20"></div>
+<div class="w-8 h-8 rounded-full bg-secondary/20"></div>
+<div class="w-8 h-8 rounded-full bg-tertiary/20"></div>
+<div class="w-8 h-8 rounded-full bg-primary_dim/20"></div>
+</div>
+<h3 class="font-headline text-xl font-bold mb-2">12 Signature Tones</h3>
+<p class="text-on-surface-variant text-sm">From Professional to Humorous, select the exact resonance for your audience.</p>
+</div>
+<!-- Tone Spectrograph Mockup -->
+</div>
+</section>
+<!-- Tone Chip Showcase -->
+<section class="py-20 bg-surface-container-low/50">
+<div class="max-w-7xl mx-auto px-8 text-center">
+<h2 class="font-headline text-2xl font-bold mb-12 opacity-80 uppercase tracking-widest">Available Resonance Profiles</h2>
+<div class="flex flex-wrap justify-center gap-4">
+<span class="px-6 py-2 rounded-full bg-primary/10 text-primary font-bold text-sm">Professional</span>
+<span class="px-6 py-2 rounded-full bg-secondary/10 text-secondary font-bold text-sm">Friendly</span>
+<span class="px-6 py-2 rounded-full bg-tertiary/10 text-tertiary font-bold text-sm">Urgent</span>
+<span class="px-6 py-2 rounded-full bg-primary-dim/10 text-primary-dim font-bold text-sm">Formal</span>
+<span class="px-6 py-2 rounded-full bg-secondary-dim/10 text-secondary-dim font-bold text-sm">Grateful</span>
+<span class="px-6 py-2 rounded-full bg-on-surface-variant/10 text-on-surface-variant font-bold text-sm">Concise</span>
+<span class="px-6 py-2 rounded-full bg-on-tertiary-fixed-variant/10 text-on-tertiary-fixed-variant font-bold text-sm">Humorous</span>
+</div>
+</div>
+</section>
+<!-- Final CTA Section -->
+<section class="py-32 px-8 text-center relative overflow-hidden">
+<div class="max-w-3xl mx-auto relative z-10">
+<h2 class="font-headline text-4xl md:text-5xl font-bold mb-8">Never send a misinterpreted email again.</h2>
+<p class="text-on-surface-variant text-xl mb-12">Join 50,000+ professionals refining their digital voice with Ethereal Tone.</p>
+<button onclick="window.location.href='editor.html'" class="bg-primary-container text-on-primary-container px-12 py-6 rounded-full text-2xl font-headline font-bold btn-glow transition-all hover:scale-105">
+                Improve Your Email Tone Now
+            </button>
+</div>
+<!-- Decorative Glow -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] -z-10"></div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-[#40485d]/15 bg-[#060e20] tonal-shift-bg-surface-container-low">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 gap-6 max-w-7xl mx-auto">
+<div class="font-manrope font-black text-[#69f6b8] text-xl">
+                Ethereal Tone AI
+            </div>
+<div class="flex flex-wrap justify-center gap-8 font-inter text-sm tracking-wide uppercase">
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors opacity-80 hover:opacity-100" href="privacy-policy.html">Privacy Policy</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors opacity-80 hover:opacity-100" href="terms.html">Terms of Service</a>
+</div>
+<div class="text-[#a3aac4] text-[10px] font-label opacity-60">
+                © 2026 Ethereal Tone AI.
+            </div>
+</div>
+</footer>
+</body></html>
