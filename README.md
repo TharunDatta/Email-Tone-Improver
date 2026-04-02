@@ -2,8 +2,11 @@
 
 An AI-powered web application that analyzes and rewrites emails in multiple signature tones using Google's Gemini API.
 
+🌐 **Live Demo:** [email-tone-improver.vercel.app](https://email-tone-improver.vercel.app)
+
 [![Node.js](https://img.shields.io/badge/Node.js-16+-green)](https://nodejs.org/)
 [![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
+[![Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black)](https://email-tone-improver.vercel.app)
 
 ---
 
@@ -147,7 +150,7 @@ When others clone your repo, they need to:
 3. Add their own Gemini API key
 4. Run `npm start`
 
-👉 **See [GITHUB_DEPLOYMENT.md](GITHUB_DEPLOYMENT.md) for full GitHub setup instructions**
+👉 **Get your free Gemini API key at [ai.google.dev](https://ai.google.dev/)**
 
 ---
 
@@ -216,7 +219,7 @@ For issues or questions:
 
 ## 🎯 What's Next?
 
-- Deploy to Vercel or Netlify
+- ✅ ~~Deploy to Vercel~~ — **Live at [email-tone-improver.vercel.app](https://email-tone-improver.vercel.app)**
 - Add user authentication
 - Save tone preferences
 - Export to PDF
