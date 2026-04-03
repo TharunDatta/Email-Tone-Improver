@@ -114,14 +114,19 @@
 <!-- TopNavBar -->
 <nav class="fixed top-0 w-full z-50 bg-[#060e20]/80 backdrop-blur-xl no-line-rule">
 <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto font-manrope tracking-tight">
-<a href="index.html" class="text-xl font-bold tracking-tighter text-[#69f6b8]">Ethereal Tone</a>
-<div class="hidden md:flex items-center space-gap-8 gap-8">
-<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors" href="index.html">Home</a>
-<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors" href="how-it-works.html">How it works</a>
+<a href="/" class="text-xl font-bold tracking-tighter text-[#69f6b8]">Ethereal Tone</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors" href="/">Home</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors" href="/how-it-works">How it works</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors" href="/profile">My History</a>
 </div>
-<button class="md:hidden text-primary">
+<button class="md:hidden text-primary" id="mobile-menu-btn" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
 <span class="material-symbols-outlined">menu</span>
 </button>
+</div>
+<div id="mobile-menu" class="hidden md:hidden bg-[#060e20]/95 backdrop-blur-xl border-t border-outline-variant/10 px-8 py-4 flex flex-col gap-4">
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors" href="/">Home</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors" href="/how-it-works">How it works</a>
 </div>
 </nav>
 <main class="pt-32 pb-20 px-6 max-w-6xl mx-auto">
@@ -321,8 +326,8 @@ Alex</textarea>
 <div class="flex flex-col md:flex-row justify-between items-center px-8 gap-6 max-w-7xl mx-auto font-inter text-sm tracking-wide uppercase">
 <div class="font-manrope font-black text-[#69f6b8]">Ethereal Tone AI</div>
 <div class="flex gap-6">
-<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors" href="privacy-policy.html">Privacy Policy</a>
-<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors" href="terms.html">Terms of Service</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors" href="/privacy-policy">Privacy Policy</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors" href="/terms">Terms of Service</a>
 </div>
 <p class="text-[#a3aac4] opacity-80">© 2026 Ethereal Tone AI.</p>
 </div>
@@ -331,6 +336,12 @@ Alex</textarea>
     let selectedTone = "Professional";
     let isSpeaking = false;
     let synth = window.speechSynthesis;
+
+    // Auth guard — redirect to login if not signed in
+    (async () => {
+        const res = await fetch('/api/auth/me');
+        if (!res.ok) { window.location.href = '/login'; }
+    })();
 
     // Initialize Tone Selection
     document.addEventListener("DOMContentLoaded", () => {
@@ -354,11 +365,36 @@ Alex</textarea>
                 });
             });
         }
+
+        // Pre-fill from Re-edit (history-detail redirect)
+        const reEditText = localStorage.getItem('reEditSourceText');
+        const reEditTone = localStorage.getItem('reEditTone');
+        if (reEditText) {
+            const sourceTextarea = document.getElementById('source-text');
+            if (sourceTextarea) sourceTextarea.value = reEditText;
+            localStorage.removeItem('reEditSourceText');
+        }
+        if (reEditTone && toneSelector) {
+            selectedTone = reEditTone;
+            const buttons = toneSelector.querySelectorAll("button");
+            buttons.forEach(btn => {
+                if (btn.innerText.trim() === reEditTone) {
+                    buttons.forEach(b => {
+                        b.classList.remove("bg-primary", "text-on-primary", "shadow-lg", "shadow-primary/20", "scale-105");
+                        b.classList.add("bg-primary/15", "text-primary");
+                    });
+                    btn.classList.add("bg-primary", "text-on-primary", "shadow-lg", "shadow-primary/20", "scale-105");
+                    btn.classList.remove("bg-primary/15", "text-primary");
+                }
+            });
+            localStorage.removeItem('reEditTone');
+        }
     });
 
     function speakText(elementId, isHtml = false) {
         if(synth.speaking) {
             synth.cancel();
+            return;
         }
         const el = document.getElementById(elementId);
         let text = el.value || el.innerText;
@@ -379,7 +415,15 @@ Alex</textarea>
 
     function copyText(elementId) {
         const el = document.getElementById(elementId);
-        let text = el.value || el.innerText;
+        // Prefer plain text for clipboard but format nicely with line breaks
+        const tmp = document.createElement("div");
+        tmp.innerHTML = el.innerHTML || "";
+        // Replace <br> and block closing tags with newlines before extracting text
+        tmp.querySelectorAll("br").forEach(br => br.replaceWith("\n"));
+        tmp.querySelectorAll("p, div").forEach(block => {
+            if (block.nextSibling) block.insertAdjacentText("afterend", "\n");
+        });
+        const text = (el.value || tmp.innerText || el.innerText).trim();
         navigator.clipboard.writeText(text).then(() => {
             const btnText = document.getElementById("copy-btn-text");
             const originalText = btnText.innerText;
@@ -463,6 +507,21 @@ Alex</textarea>
             if(toneShiftEl) toneShiftEl.innerText = `Tone Enhanced → ${selectedTone}`;
             const detectedEl = document.getElementById("detected-tone-label");
             if(detectedEl) detectedEl.innerText = `Analysis complete ✅`;
+
+            // Auto-save to history (fire and forget)
+            fetch('/api/history', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    sourceText: sourceText,
+                    improvedEmail: result.improved_email || '',
+                    diffHtml: result.diff_html || '',
+                    selectedTone: selectedTone,
+                    improvements: result.improvements || [],
+                    clarityScore: clarityScore,
+                    toneResonance: toneResonance
+                })
+            }).catch(() => {}); // silent fail — not blocking UX
             
         } catch(err) {
             console.error("AI Error:", err);

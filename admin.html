@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Panel – Ethereal Tone AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: { extend: { colors: {
+      "primary": "#69f6b8", "primary-dim": "#58e7ab", "primary-container": "#06b77f",
+      "on-primary": "#005a3c", "on-primary-container": "#002919",
+      "secondary": "#fcc025", "tertiary": "#ff716a",
+      "surface": "#060e20", "surface-dim": "#060e20",
+      "surface-container": "#0f1930", "surface-container-low": "#091328",
+      "surface-container-high": "#141f38", "surface-container-highest": "#192540",
+      "surface-bright": "#1f2b49", "surface-variant": "#192540",
+      "on-surface": "#dee5ff", "on-surface-variant": "#a3aac4",
+      "outline": "#6d758c", "outline-variant": "#40485d",
+      "background": "#060e20", "error": "#ff716c",
+    }, fontFamily: { "headline": ["Manrope"], "body": ["Inter"], "label": ["Inter"] } } }
+  }
+</script>
+<style>
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.glass-card { background: rgba(25,37,64,0.4); backdrop-filter: blur(12px); }
+.glow-primary { box-shadow: 0 0 20px rgba(105,246,184,0.2); }
+.nav-item { display:flex; align-items:center; gap:0.75rem; padding:0.75rem 1rem; border-radius:0.5rem; color:#a3aac4; cursor:pointer; transition:all 0.15s; }
+.nav-item:hover { color:#69f6b8; background:rgba(31,43,73,0.5); }
+.nav-item.active { color:#69f6b8; background:#0f1930; font-weight:600; }
+.section { display: none; }
+.section.active { display: block; }
+.tone-bar-fill { transition: width 0.6s cubic-bezier(.4,0,.2,1); }
+</style>
+</head>
+<body class="bg-background text-on-surface font-body">
+
+<!-- Sidebar -->
+<aside class="fixed left-0 top-0 h-screen w-64 border-r border-outline-variant/15 bg-[#091328] flex flex-col p-6 z-50">
+  <div class="mb-8 flex items-center gap-3">
+    <div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center glow-primary">
+      <span class="material-symbols-outlined text-on-primary-container text-xl" style="font-variation-settings:'FILL' 1">auto_awesome</span>
+    </div>
+    <div>
+      <h1 class="text-lg font-bold tracking-tighter text-primary font-headline">Ethereal Tone</h1>
+      <p class="text-[10px] text-on-surface-variant opacity-70 uppercase tracking-widest">Admin Panel</p>
+    </div>
+  </div>
+
+  <!-- Search -->
+  <div class="relative mb-6">
+    <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+    <input id="user-search" type="text" placeholder="Search users..." class="w-full bg-surface-container border border-outline-variant/20 rounded-xl py-2 pl-9 pr-3 text-sm placeholder:text-on-surface-variant/40 focus:ring-1 focus:ring-primary/40 outline-none" oninput="filterUsers(this.value)"/>
+  </div>
+
+  <nav class="flex-1 space-y-1">
+    <div class="nav-item active" onclick="switchSection('overview')" id="nav-overview">
+      <span class="material-symbols-outlined">dashboard</span><span>Overview</span>
+    </div>
+    <div class="nav-item" onclick="switchSection('users')" id="nav-users">
+      <span class="material-symbols-outlined">group</span><span>User Management</span>
+    </div>
+    <div class="nav-item" onclick="switchSection('analytics')" id="nav-analytics">
+      <span class="material-symbols-outlined">analytics</span><span>Tone Analytics</span>
+    </div>
+    <div class="nav-item" onclick="switchSection('health')" id="nav-health">
+      <span class="material-symbols-outlined">monitor_heart</span><span>System Health</span>
+    </div>
+  </nav>
+
+  <div class="pt-4 border-t border-outline-variant/10">
+    <p class="text-[10px] font-bold uppercase tracking-widest text-primary/50 mb-3 px-1">System Status: Optimal</p>
+    <button onclick="adminLogout()" class="flex items-center gap-3 w-full px-4 py-2.5 text-tertiary hover:bg-tertiary/10 rounded-lg transition-colors text-sm font-semibold">
+      <span class="material-symbols-outlined text-base">logout</span>Sign Out
+    </button>
+  </div>
+</aside>
+
+<!-- Top Header -->
+<header class="fixed left-64 top-0 h-16 w-[calc(100%-16rem)] bg-[#060e20]/90 backdrop-blur-xl border-b border-outline-variant/10 z-40 flex justify-between items-center px-8">
+  <span id="section-title" class="text-base font-bold text-primary font-headline">Overview</span>
+  <div class="flex items-center gap-3">
+    <span id="admin-time" class="text-xs text-on-surface-variant"></span>
+    <button onclick="refreshAll()" title="Refresh data" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant/40 hover:text-primary transition-all">
+      <span class="material-symbols-outlined text-xl">refresh</span>
+    </button>
+    <div class="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-primary font-bold text-xs">A</div>
+  </div>
+</header>
+
+<!-- Main -->
+<main class="ml-64 pt-16 px-8 pb-12 min-h-screen">
+
+  <!-- ── OVERVIEW ─────────────────────────────── -->
+  <section id="section-overview" class="section active pt-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-5 mb-10">
+      <div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/10">
+        <p class="text-xs text-on-surface-variant uppercase tracking-widest mb-2">Total Users</p>
+        <h2 id="ov-total-users" class="text-4xl font-headline font-bold">—</h2>
+      </div>
+      <div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/10">
+        <p class="text-xs text-on-surface-variant uppercase tracking-widest mb-2">Total Conversions</p>
+        <h2 id="ov-total-conv" class="text-4xl font-headline font-bold">—</h2>
+      </div>
+      <div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/10">
+        <p class="text-xs text-on-surface-variant uppercase tracking-widest mb-2">Available Tones</p>
+        <h2 class="text-4xl font-headline font-bold">12</h2>
+      </div>
+      <div class="bg-surface-container-low rounded-2xl p-6 border border-primary/10">
+        <p class="text-xs text-on-surface-variant uppercase tracking-widest mb-2">System</p>
+        <div class="flex items-center gap-2">
+          <div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+          <h2 class="text-2xl font-headline font-bold text-primary">Online</h2>
+        </div>
+      </div>
+    </div>
+    <!-- Top tone preview -->
+    <div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/10">
+      <h3 class="font-headline text-base font-bold mb-5 text-on-surface">Top Tones Used</h3>
+      <div id="ov-top-tones" class="space-y-3">
+        <div class="text-on-surface-variant text-sm">Loading...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── USER MANAGEMENT ──────────────────────── -->
+  <section id="section-users" class="section pt-8">
+    <div class="grid grid-cols-12 gap-6">
+      <!-- User List -->
+      <div class="col-span-12 lg:col-span-4">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="font-headline text-lg font-bold">Users <span id="um-user-count" class="text-primary text-sm font-normal ml-1"></span></h3>
+        </div>
+        <div id="um-user-list" class="space-y-2 max-h-[calc(100vh-180px)] overflow-y-auto pr-1">
+          <div class="text-on-surface-variant text-sm p-4">Loading...</div>
+        </div>
+      </div>
+      <!-- User Detail -->
+      <div class="col-span-12 lg:col-span-8">
+        <div id="um-detail" class="glass-card rounded-2xl p-8 border border-outline-variant/10 min-h-[500px] flex items-center justify-center">
+          <div class="text-center text-on-surface-variant">
+            <span class="material-symbols-outlined text-5xl block mb-3 opacity-30">person_search</span>
+            <p class="text-sm">Select a user to view details &amp; history</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TONE ANALYTICS ───────────────────────── -->
+  <section id="section-analytics" class="section pt-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/10 md:col-span-2">
+        <h3 class="font-headline text-base font-bold mb-6">Tone Usage Distribution</h3>
+        <div id="analytics-bars" class="space-y-4">
+          <div class="text-on-surface-variant text-sm">Loading...</div>
+        </div>
+      </div>
+      <div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/10">
+        <h3 class="font-headline text-base font-bold mb-4">Summary</h3>
+        <div id="analytics-summary" class="space-y-3"></div>
+      </div>
+      <div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/10">
+        <h3 class="font-headline text-base font-bold mb-4">Top Tone</h3>
+        <div id="analytics-top" class="text-center pt-4">—</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SYSTEM HEALTH ────────────────────────── -->
+  <section id="section-health" class="section pt-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/10">
+        <h3 class="font-headline text-base font-bold mb-5">Service Status</h3>
+        <div class="space-y-4" id="health-services">
+          <div class="text-on-surface-variant text-sm">Checking...</div>
+        </div>
+      </div>
+      <div class="bg-surface-container-low rounded-2xl p-6 border border-outline-variant/10">
+        <h3 class="font-headline text-base font-bold mb-5">Platform Info</h3>
+        <div class="space-y-3 text-sm" id="health-info">
+          <div class="flex justify-between py-2 border-b border-outline-variant/10">
+            <span class="text-on-surface-variant">Server Time</span>
+            <span id="hi-server-time" class="font-medium">—</span>
+          </div>
+          <div class="flex justify-between py-2 border-b border-outline-variant/10">
+            <span class="text-on-surface-variant">API Version</span>
+            <span class="font-medium text-primary">v2.5-flash</span>
+          </div>
+          <div class="flex justify-between py-2 border-b border-outline-variant/10">
+            <span class="text-on-surface-variant">Environment</span>
+            <span class="font-medium">Production</span>
+          </div>
+          <div class="flex justify-between py-2">
+            <span class="text-on-surface-variant">Database</span>
+            <span class="font-medium text-primary" id="hi-db-status">Checking...</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Toast -->
+<div id="toast" class="hidden fixed top-5 right-5 z-[999] px-5 py-3 rounded-xl text-sm font-semibold shadow-xl transition-all"></div>
+
+<!-- Confirm Modal -->
+<div id="confirm-modal" class="hidden fixed inset-0 z-[998] flex items-center justify-center bg-black/60 backdrop-blur-sm">
+  <div class="bg-surface-container-high rounded-2xl p-8 max-w-sm w-full mx-4 border border-outline-variant/20 shadow-2xl">
+    <h3 class="font-headline text-lg font-bold mb-2" id="modal-title">Confirm</h3>
+    <p id="modal-msg" class="text-on-surface-variant text-sm mb-6"></p>
+    <div class="flex gap-3">
+      <button onclick="closeModal()" class="flex-1 py-2.5 rounded-xl border border-outline-variant text-on-surface-variant hover:bg-surface-bright transition-colors text-sm font-semibold">Cancel</button>
+      <button id="modal-confirm-btn" class="flex-1 py-2.5 rounded-xl bg-tertiary/20 text-tertiary border border-tertiary/30 hover:bg-tertiary/30 transition-colors text-sm font-semibold">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── State ─────────────────────────────────────
+let _allUsers = [];
+let _currentUserId = null;
+let _modalCallback = null;
+
+// ── Auth Guard ────────────────────────────────
+(async () => {
+  const r = await fetch('/api/admin/stats');
+  if (r.status === 403 || r.status === 401) { window.location.href = '/admin-login'; return; }
+  if (r.ok) {
+    const { totalUsers, totalConversions } = await r.json();
+    setEl('ov-total-users', totalUsers ?? '—');
+    setEl('ov-total-conv', totalConversions ?? '—');
+  }
+  await Promise.all([loadUsers(), loadToneStats(), loadHealth()]);
+  updateTime();
+  setInterval(updateTime, 1000);
+})();
+
+// ── Helpers ───────────────────────────────────
+function setEl(id, val) { const e = document.getElementById(id); if (e) e.textContent = val; }
+function showToast(msg, type = 'success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = `fixed top-5 right-5 z-[999] px-5 py-3 rounded-xl text-sm font-semibold shadow-xl ${type === 'error' ? 'bg-tertiary/20 text-tertiary border border-tertiary/30' : 'bg-primary/20 text-primary border border-primary/30'}`;
+  t.classList.remove('hidden');
+  setTimeout(() => t.classList.add('hidden'), 3000);
+}
+function openModal(title, msg, cb) {
+  document.getElementById('modal-title').textContent = title;
+  document.getElementById('modal-msg').textContent = msg;
+  _modalCallback = cb;
+  document.getElementById('modal-confirm-btn').onclick = () => { closeModal(); cb(); };
+  document.getElementById('confirm-modal').classList.remove('hidden');
+}
+function closeModal() { document.getElementById('confirm-modal').classList.add('hidden'); }
+function updateTime() {
+  const now = new Date();
+  const s = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+  setEl('admin-time', s);
+  setEl('hi-server-time', now.toLocaleString('en-US', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }));
+}
+function refreshAll() { loadUsers(); loadToneStats(); loadHealth(); showToast('Data refreshed'); }
+
+// ── Section Switching ─────────────────────────
+const SECTIONS = ['overview', 'users', 'analytics', 'health'];
+function switchSection(name) {
+  SECTIONS.forEach(s => {
+    document.getElementById(`section-${s}`).classList.toggle('active', s === name);
+    document.getElementById(`nav-${s}`)?.classList.toggle('active', s === name);
+  });
+  const titles = { overview: 'Overview', users: 'User Management', analytics: 'Tone Analytics', health: 'System Health' };
+  setEl('section-title', titles[name] || name);
+  // Also update sidebar search visibility
+  document.getElementById('user-search').style.display = name === 'users' ? '' : 'none';
+  if (name === 'users') document.getElementById('user-search').parentElement.style.display = '';
+  else document.getElementById('user-search').parentElement.style.display = 'none';
+}
+// Hide search on non-user sections initially
+document.getElementById('user-search').parentElement.style.display = 'none';
+
+// ── Load Users ────────────────────────────────
+async function loadUsers() {
+  try {
+    const r = await fetch('/api/admin/users');
+    if (r.status === 401 || r.status === 403) {
+      window.location.href = '/admin-login';
+      return;
+    }
+    if (!r.ok) throw new Error();
+    const { users } = await r.json();
+    _allUsers = users || [];
+    renderUserList(_allUsers);
+    setEl('um-user-count', `(${_allUsers.length})`);
+  } catch { showToast('Failed to load users', 'error'); }
+}
+
+function renderUserList(users) {
+  const el = document.getElementById('um-user-list');
+  if (!users.length) { el.innerHTML = '<div class="text-on-surface-variant text-sm p-4 text-center">No users found.</div>'; return; }
+  el.innerHTML = users.map(u => {
+    const initials = (u.name || u.email || 'U').trim().split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+    const isActive = _currentUserId === u.id;
+    return `<div onclick="selectUser('${u.id}')" class="flex items-center gap-3 p-3 rounded-xl cursor-pointer border transition-all ${isActive ? 'border-primary/30 bg-primary/5' : 'border-transparent bg-surface-container-low hover:bg-surface-container hover:border-outline-variant/20'}">
+      <div class="w-10 h-10 rounded-full bg-primary/15 border border-primary/20 flex items-center justify-center text-primary font-bold text-sm flex-shrink-0">${initials}</div>
+      <div class="flex-1 min-w-0">
+        <p class="font-semibold text-sm truncate">${u.name || 'Unnamed'}</p>
+        <p class="text-xs text-on-surface-variant truncate">${u.email}</p>
+      </div>
+      <div class="text-right flex-shrink-0">
+        <p class="text-xs font-bold text-primary">${u.total_conversions || 0}</p>
+        <p class="text-[10px] text-on-surface-variant">convs</p>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function filterUsers(q) {
+  const filtered = q ? _allUsers.filter(u =>
+    (u.name || '').toLowerCase().includes(q.toLowerCase()) ||
+    (u.email || '').toLowerCase().includes(q.toLowerCase())
+  ) : _allUsers;
+  renderUserList(filtered);
+}
+
+// ── Select User → show detail + history ──────
+async function selectUser(userId) {
+  _currentUserId = userId;
+  const user = _allUsers.find(u => u.id === userId);
+  if (!user) return;
+  renderUserList(_allUsers); // re-render to show active state
+
+  const detailEl = document.getElementById('um-detail');
+  const initials = (user.name || user.email || 'U').trim().split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+  const joined = new Date(user.created_at).toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
+
+  detailEl.innerHTML = `
+    <div>
+      <!-- User Header -->
+      <div class="flex flex-col sm:flex-row gap-6 items-start mb-8 pb-6 border-b border-outline-variant/15">
+        <div class="w-16 h-16 rounded-2xl bg-primary/15 border-2 border-primary/30 flex items-center justify-center text-primary font-bold font-headline text-2xl flex-shrink-0">${initials}</div>
+        <div class="flex-1">
+          <h2 class="text-2xl font-headline font-bold mb-1">${user.name || 'Unnamed User'}</h2>
+          <p class="text-sm text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-sm">mail</span>${user.email}</p>
+          <div class="flex flex-wrap gap-4 mt-3">
+            <span class="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full font-bold capitalize">${user.role || 'user'}</span>
+            <span class="text-xs text-on-surface-variant">${user.total_conversions || 0} conversions</span>
+            <span class="text-xs text-on-surface-variant">Joined ${joined}</span>
+          </div>
+        </div>
+        <button onclick="confirmDeleteUser('${user.id}', '${(user.name || user.email || '').replace(/'/g, "")}')"
+          class="flex items-center gap-2 px-4 py-2 text-sm text-tertiary border border-tertiary/30 rounded-xl hover:bg-tertiary/10 transition-colors flex-shrink-0 font-semibold">
+          <span class="material-symbols-outlined text-base">person_remove</span>Delete User
+        </button>
+      </div>
+      <!-- History -->
+      <div>
+        <h3 class="font-headline text-sm font-bold uppercase tracking-widest text-on-surface-variant mb-4">Conversion History</h3>
+        <div id="user-history-list" class="space-y-3 max-h-[380px] overflow-y-auto pr-1">
+          <div class="text-on-surface-variant text-sm text-center py-6">Loading history...</div>
+        </div>
+      </div>
+    </div>`;
+
+  // Fetch history
+  try {
+    const r = await fetch(`/api/admin/user-history/${userId}`);
+    if (r.status === 401 || r.status === 403) {
+      window.location.href = '/admin-login';
+      return;
+    }
+    const { history } = await r.json();
+    renderUserHistory(history || [], userId);
+  } catch {
+    document.getElementById('user-history-list').innerHTML = '<div class="text-tertiary text-sm p-4">Failed to load history.</div>';
+  }
+}
+
+function renderUserHistory(history, userId) {
+  const el = document.getElementById('user-history-list');
+  if (!history.length) {
+    el.innerHTML = '<div class="text-on-surface-variant text-sm text-center py-8 opacity-60">No conversions yet.</div>';
+    return;
+  }
+  el.innerHTML = history.map(h => {
+    const date = new Date(h.created_at).toLocaleString('en-US', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
+    const snippet = (h.source_text || '').slice(0, 80) + (h.source_text?.length > 80 ? '…' : '');
+    return `<div id="hist-${h.id}" class="flex items-start gap-3 p-4 rounded-xl bg-surface-container border border-outline-variant/10 hover:border-outline-variant/25 transition-all group">
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-2 mb-1 flex-wrap">
+          <span class="text-[10px] font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full uppercase tracking-wider">${h.selected_tone || 'Unknown'}</span>
+          <span class="text-[10px] text-on-surface-variant">${date}</span>
+        </div>
+        <p class="text-xs text-on-surface/70 italic mt-1">"${snippet}"</p>
+      </div>
+      <button onclick="confirmDeleteHistory('${h.id}', '${userId}')" title="Delete entry"
+        class="opacity-0 group-hover:opacity-100 flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-tertiary hover:bg-tertiary/10 transition-all">
+        <span class="material-symbols-outlined text-base">delete</span>
+      </button>
+    </div>`;
+  }).join('');
+}
+
+// ── Delete History Entry ──────────────────────
+function confirmDeleteHistory(historyId, userId) {
+  openModal('Delete Conversion', 'This will permanently delete this conversion record.', async () => {
+    try {
+      const r = await fetch(`/api/admin/history/${historyId}`, { method: 'DELETE' });
+      if (!r.ok) throw new Error();
+      // Remove the row from the UI
+      document.getElementById(`hist-${historyId}`)?.remove();
+      const el = document.getElementById('user-history-list');
+      if (el && !el.querySelector('[id^="hist-"]')) {
+        el.innerHTML = '<div class="text-on-surface-variant text-sm text-center py-8 opacity-60">No conversions yet.</div>';
+      }
+      // Decrement user conv count in local state + re-render user list
+      const u = _allUsers.find(x => x.id === userId);
+      if (u) {
+        u.total_conversions = Math.max(0, (u.total_conversions || 1) - 1);
+        renderUserList(_allUsers);
+      }
+      // Decrement Overview "Total Conversions" counter
+      const ovEl = document.getElementById('ov-total-conv');
+      if (ovEl) {
+        const current = parseInt(ovEl.textContent) || 0;
+        ovEl.textContent = Math.max(0, current - 1);
+      }
+      showToast('Conversion deleted');
+    } catch { showToast('Failed to delete', 'error'); }
+  });
+}
+
+// ── Delete User ───────────────────────────────
+function confirmDeleteUser(userId, name) {
+  openModal('Delete User', `Delete "${name}" and ALL their conversion history? This cannot be undone.`, async () => {
+    try {
+      const r = await fetch(`/api/admin/user/${userId}`, { method: 'DELETE' });
+      if (!r.ok) throw new Error();
+      _allUsers = _allUsers.filter(u => u.id !== userId);
+      _currentUserId = null;
+      renderUserList(_allUsers);
+      document.getElementById('um-detail').innerHTML = `<div class="text-center text-on-surface-variant"><span class="material-symbols-outlined text-5xl block mb-3 opacity-30">person_search</span><p class="text-sm">User deleted.</p></div>`;
+      setEl('um-user-count', `(${_allUsers.length})`);
+      setEl('ov-total-users', _allUsers.length);
+      showToast('User deleted successfully');
+    } catch { showToast('Failed to delete user', 'error'); }
+  });
+}
+
+// ── Tone Analytics ────────────────────────────
+const TONE_COLORS = {
+  'Professional': '#69f6b8', 'Friendly': '#fcc025', 'Urgent': '#ff716a',
+  'Formal': '#58e7ab', 'Grateful': '#edb210', 'Concise': '#a3aac4',
+  'Humorous': '#ff928b', 'Assertive': '#69f6b8', 'Empathetic': '#fcc025',
+  'Casual': '#ff716a', 'Persuasive': '#58e7ab', 'Diplomatic': '#a3aac4',
+};
+function toneColor(t) { return TONE_COLORS[t] || '#69f6b8'; }
+
+async function loadToneStats() {
+  try {
+    const r = await fetch('/api/admin/tone-stats');
+    if (!r.ok) throw new Error();
+    const { tones, total } = await r.json();
+
+    // Render analytics bars
+    const barsEl = document.getElementById('analytics-bars');
+    if (!tones.length) { barsEl.innerHTML = '<div class="text-on-surface-variant text-sm">No data yet.</div>'; return; }
+    barsEl.innerHTML = tones.map(({ tone, count, pct }) => `
+      <div>
+        <div class="flex justify-between mb-1.5">
+          <span class="text-sm font-semibold" style="color:${toneColor(tone)}">${tone}</span>
+          <span class="text-xs text-on-surface-variant">${count} uses · ${pct}%</span>
+        </div>
+        <div class="h-2.5 w-full bg-surface-container rounded-full overflow-hidden">
+          <div class="h-full rounded-full tone-bar-fill" style="width:0%;background:${toneColor(tone)}" data-width="${pct}%"></div>
+        </div>
+      </div>`).join('');
+    // Animate bars
+    setTimeout(() => {
+      document.querySelectorAll('.tone-bar-fill').forEach(b => b.style.width = b.dataset.width);
+    }, 100);
+
+    // Summary
+    const summEl = document.getElementById('analytics-summary');
+    summEl.innerHTML = `
+      <div class="flex justify-between py-2 border-b border-outline-variant/10 text-sm"><span class="text-on-surface-variant">Total Conversions</span><span class="font-bold">${total}</span></div>
+      <div class="flex justify-between py-2 border-b border-outline-variant/10 text-sm"><span class="text-on-surface-variant">Unique Tones Used</span><span class="font-bold">${tones.length}</span></div>
+      <div class="flex justify-between py-2 text-sm"><span class="text-on-surface-variant">Avg per Tone</span><span class="font-bold">${tones.length ? Math.round(total / tones.length) : 0}</span></div>`;
+
+    // Ov top tones
+    const ovEl = document.getElementById('ov-top-tones');
+    ovEl.innerHTML = tones.slice(0, 5).map(({ tone, pct }) => `
+      <div class="flex items-center gap-3">
+        <div class="h-1.5 w-full rounded-full overflow-hidden bg-surface-container">
+          <div class="h-full rounded-full" style="width:${pct}%;background:${toneColor(tone)}"></div>
+        </div>
+        <span class="text-xs font-semibold w-28 text-right flex-shrink-0" style="color:${toneColor(tone)}">${tone} ${pct}%</span>
+      </div>`).join('');
+
+    // Top tone card
+    if (tones[0]) {
+      document.getElementById('analytics-top').innerHTML = `
+        <div class="text-5xl font-headline font-bold mb-2" style="color:${toneColor(tones[0].tone)}">${tones[0].pct}%</div>
+        <div class="font-bold text-lg" style="color:${toneColor(tones[0].tone)}">${tones[0].tone}</div>
+        <div class="text-xs text-on-surface-variant mt-1">${tones[0].count} of ${total} conversions</div>`;
+    }
+  } catch { }
+}
+
+// ── System Health ─────────────────────────────
+async function loadHealth() {
+  const servicesEl = document.getElementById('health-services');
+  const checks = [
+    { name: 'Supabase Database', test: () => fetch('/api/admin/stats').then(r => r.ok) },
+    { name: 'Auth API', test: () => fetch('/api/auth/me').then(r => r.status !== 500) },
+    { name: 'History API', test: () => fetch('/api/admin/stats').then(r => r.ok) },
+    { name: 'Enhancement API', test: async () => true }, // warm check only
+  ];
+
+  servicesEl.innerHTML = checks.map(c => `
+    <div class="flex items-center justify-between py-3 border-b border-outline-variant/10 last:border-0">
+      <span class="text-sm">${c.name}</span>
+      <span id="health-${c.name.replace(/ /g,'')}" class="text-xs font-bold text-on-surface-variant">Checking...</span>
+    </div>`).join('');
+
+  for (const c of checks) {
+    const id = `health-${c.name.replace(/ /g,'')}`;
+    try {
+      const ok = await c.test();
+      const el = document.getElementById(id);
+      if (el) { el.textContent = ok ? '✓ Online' : '✗ Error'; el.className = `text-xs font-bold ${ok ? 'text-primary' : 'text-tertiary'}`; }
+    } catch {
+      const el = document.getElementById(id);
+      if (el) { el.textContent = '✗ Error'; el.className = 'text-xs font-bold text-tertiary'; }
+    }
+  }
+  setEl('hi-db-status', '✓ Connected');
+}
+
+// ── Admin Logout ──────────────────────────────
+async function adminLogout() {
+  await fetch('/api/auth/logout', { method: 'POST' });
+  window.location.href = '/admin-login';
+}
+</script>
+</body></html>

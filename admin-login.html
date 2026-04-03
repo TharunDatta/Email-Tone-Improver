@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#69f6b8",
+              "inverse-primary": "#006d4a",
+              "secondary-fixed-dim": "#f6ba1e",
+              "surface-container-lowest": "#000000",
+              "primary": "#69f6b8",
+              "on-tertiary-container": "#1f0001",
+              "surface-container-low": "#091328",
+              "tertiary-fixed-dim": "#ff7b74",
+              "outline": "#6d758c",
+              "on-primary": "#005a3c",
+              "surface": "#060e20",
+              "on-secondary-fixed-variant": "#684c00",
+              "error-container": "#9f0519",
+              "on-tertiary": "#490005",
+              "secondary-fixed": "#ffca51",
+              "secondary-dim": "#edb210",
+              "primary-fixed": "#69f6b8",
+              "on-primary-fixed": "#00452d",
+              "primary-fixed-dim": "#58e7ab",
+              "on-error-container": "#ffa8a3",
+              "secondary-container": "#795900",
+              "on-error": "#490006",
+              "on-surface-variant": "#a3aac4",
+              "inverse-on-surface": "#4d556b",
+              "surface-container-highest": "#192540",
+              "tertiary-dim": "#ff716a",
+              "outline-variant": "#40485d",
+              "primary-dim": "#58e7ab",
+              "on-tertiary-fixed": "#3a0003",
+              "on-secondary": "#563e00",
+              "surface-dim": "#060e20",
+              "surface-container-high": "#141f38",
+              "primary-container": "#06b77f",
+              "tertiary": "#ff716a",
+              "inverse-surface": "#faf8ff",
+              "error": "#ff716c",
+              "error-dim": "#d7383b",
+              "background": "#060e20",
+              "on-secondary-fixed": "#443100",
+              "on-primary-fixed-variant": "#006544",
+              "on-background": "#dee5ff",
+              "on-surface": "#dee5ff",
+              "on-primary-container": "#002919",
+              "surface-container": "#0f1930",
+              "on-secondary-container": "#fff6ed",
+              "tertiary-container": "#fd4e4d",
+              "surface-bright": "#1f2b49",
+              "secondary": "#fcc025",
+              "on-tertiary-fixed-variant": "#79000e",
+              "tertiary-fixed": "#ff928b",
+              "surface-variant": "#192540"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(25, 37, 64, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .ambient-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(105, 246, 184, 0.05) 0%, transparent 70%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+<div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+<div class="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] bg-primary/5 blur-[120px] rounded-full"></div>
+<div class="absolute top-[40%] -right-[15%] w-[50%] h-[50%] bg-secondary/5 blur-[120px] rounded-full"></div>
+<div class="absolute inset-0 ambient-glow"></div>
+</div>
+<div class="z-10 w-full max-w-[1200px] px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7 space-y-8">
+<header class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-primary-container flex items-center justify-center shadow-[0_0_20px_rgba(105,246,184,0.3)]">
+<span class="material-symbols-outlined text-on-primary-container text-2xl" data-icon="lock_open">lock_open</span>
+</div>
+<span class="font-headline font-extrabold text-2xl tracking-tight text-primary">Ethereal Tone AI</span>
+</div>
+<h1 class="font-headline text-display-lg leading-[1.1] text-on-surface">
+                    Administrative <br/>
+<span class="text-primary-fixed-dim">Portal Entry</span>
+</h1>
+<p class="text-on-surface-variant text-lg max-w-md font-light leading-relaxed">
+                    Secure access point for the Digital Curator ecosystem. Unauthorized attempts are logged and reported to the main core.
+                </p>
+</header>
+<div class="flex flex-wrap gap-6 pt-4">
+<div class="flex items-center gap-3 bg-surface-container-low px-4 py-2.5 rounded-lg">
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#69f6b8]"></div>
+<span class="font-label text-label-md text-primary">Systems Nominal</span>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-low px-4 py-2.5 rounded-lg">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="shield">shield</span>
+<span class="font-label text-label-md text-on-surface-variant">Lumina Encryption Active</span>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-low px-4 py-2.5 rounded-lg">
+<span class="material-symbols-outlined text-outline text-sm" data-icon="dns">dns</span>
+<span class="font-label text-label-md text-on-surface-variant">Node 0x7F2 Alpha</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="glass-panel border border-outline-variant/15 p-10 rounded-[2rem] shadow-2xl space-y-8 relative overflow-hidden">
+<div class="absolute top-0 right-0 p-8 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-9xl" data-icon="verified_user">verified_user</span>
+</div>
+<div class="space-y-2">
+<h2 class="font-headline text-headline-md text-on-surface">Authorize Access</h2>
+<p class="text-on-surface-variant text-sm">Please verify your identity to proceed.</p>
+</div>
+<form class="space-y-6" id="admin-form" onsubmit="handleAdminLogin(event)">
+<div class="space-y-2">
+<label class="font-label text-label-md text-on-surface-variant ml-1" for="admin_id">Admin ID / Email</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline group-focus-within:text-primary transition-colors" data-icon="fingerprint">fingerprint</span>
+</div>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 text-on-surface placeholder:text-outline/50 focus:ring-2 focus:ring-primary/20 transition-all outline-none" id="admin_id" placeholder="curator_id_4920" type="text"/>
+<div class="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-primary to-transparent transition-all duration-500 group-focus-within:w-full"></div>
+</div>
+</div>
+<div class="space-y-2">
+<label class="font-label text-label-md text-on-surface-variant ml-1" for="password">Security Key</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline group-focus-within:text-primary transition-colors" data-icon="key">key</span>
+</div>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-12 text-on-surface placeholder:text-outline/50 focus:ring-2 focus:ring-primary/20 transition-all outline-none" id="password" placeholder="••••••••••••" type="password"/>
+<button class="absolute inset-y-0 right-0 pr-4 flex items-center text-outline hover:text-on-surface transition-colors" type="button" onclick="togglePasswordVisibility(event)">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+<div class="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-primary to-transparent transition-all duration-500 group-focus-within:w-full"></div>
+</div>
+</div>
+<div class="pt-4">
+<button class="w-full group relative bg-primary-container text-on-primary-container font-headline font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-all active:scale-[0.98] shadow-[0_0_20px_rgba(105,246,184,0.15)] hover:shadow-[0_0_30px_rgba(105,246,184,0.3)]" type="submit">
+                            <span id="admin-btn-text">Authorize Access</span>
+                            <span class="material-symbols-outlined transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="flex justify-between items-center pt-2">
+<a class="text-xs text-outline hover:text-primary transition-colors font-medium" href="#">Lost credentials?</a>
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
+<span class="text-[10px] uppercase tracking-widest text-outline font-bold">Encrypted Link</span>
+</div>
+</div>
+</form>
+</div>
+<div class="mt-8 flex justify-center gap-4 text-outline-variant opacity-40">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="material-symbols-outlined" data-icon="api">api</span>
+<span class="material-symbols-outlined" data-icon="security">security</span>
+</div>
+</div>
+</div>
+<footer class="fixed bottom-0 w-full py-8 px-12 flex flex-col md:flex-row justify-between items-center text-on-surface-variant font-label text-[10px] tracking-widest uppercase gap-4 pointer-events-none">
+<div>© 2024 Ethereal Tone AI. Built for Digital Curators.</div>
+<div class="flex gap-8 pointer-events-auto">
+<a class="hover:text-primary transition-colors cursor-pointer" href="/privacy-policy">Privacy Policy</a>
+<a class="hover:text-primary transition-colors cursor-pointer" href="/terms">Terms of Service</a>
+</div>
+</footer>
+<div id="error-msg" class="hidden fixed top-6 left-1/2 -translate-x-1/2 bg-error/20 border border-error/40 text-error px-6 py-3 rounded-xl text-sm font-medium z-50"></div>
+<script>
+async function handleAdminLogin(e) {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.querySelector('#admin_id').value;
+    const password = form.querySelector('#password').value;
+    const btn = document.getElementById('admin-btn-text');
+    btn.textContent = 'Verifying...';
+    try {
+        const res = await fetch('/api/admin/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+        let data;
+        try {
+            data = await res.json();
+        } catch (parseErr) {
+            throw new Error('Invalid response from server. Please try again.');
+        }
+        if (!res.ok) throw new Error(data.error || 'Authentication failed');
+        window.location.href = '/admin';
+    } catch (err) {
+        const msg = document.getElementById('error-msg');
+        msg.textContent = err.message;
+        msg.classList.remove('hidden');
+        setTimeout(() => msg.classList.add('hidden'), 4000);
+    } finally {
+        btn.textContent = 'Authorize Access';
+    }
+}
+
+function togglePasswordVisibility(e) {
+    e.preventDefault();
+    const container = e.target.closest('.relative');
+    const input = container.querySelector('input');
+    if (input) {
+        if (input.type === 'password') {
+            input.type = 'text';
+            e.target.textContent = 'visibility_off';
+        } else {
+            input.type = 'password';
+            e.target.textContent = 'visibility';
+        }
+    }
+}
+</script>
+<div class="fixed bottom-12 right-12 w-32 h-32 opacity-20 pointer-events-none">
+<img alt="" class="w-full h-full" data-alt="abstract geometric wireframe sphere with glowing vertex points on a dark background representing high-tech data core" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzmFECXqep5QQq0H_OBJ4jdAZQIOjxq4-EhiNGYmVY54bEL9k6QHaN0QzaGcxNgNrJ1FQep80FvgAUy8MPiNSOoQnCCSV39masVvxbq_zLWjyZjgQ-JKSw1QUdO7OYL000LmLbEYRkx56nn-OvuWQq6x7hDs4aE_GHG7u8_u9JVs3ip2kz_4NZr7h_yUf3r0_Nz4dBuffsL_8UKQuGTu8blzHwXhuXmSBoWYN-NTqJChUjMsC7FBTDah59dIAbVdcJM0MF2Tr27qk9"/>
+</div>
+</body></html>

@@ -107,21 +107,31 @@
 <!-- TopNavBar -->
 <nav class="fixed top-0 w-full z-50 backdrop-blur-md bg-opacity-80 bg-[#060e20] transition-all duration-300">
 <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto relative">
-<a href="index.html" class="text-xl font-bold tracking-tight text-[#69f6b8] font-headline">
+<a href="/" class="text-xl font-bold tracking-tight text-[#69f6b8] font-headline">
                 Ethereal Tone
             </a>
 <div class="hidden md:flex items-center gap-8 font-body">
-<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors text-sm font-medium" href="index.html">Home</a>
-<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors text-sm font-medium" href="how-it-works.html">How It Works</a>
-<a class="text-[#69f6b8] font-semibold border-b border-[#69f6b8] pb-1 text-sm" href="privacy-policy.html">Privacy</a>
-<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors text-sm font-medium" href="terms.html">Terms</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors text-sm font-medium" href="/">Home</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors text-sm font-medium" href="/how-it-works">How It Works</a>
+<a class="text-[#69f6b8] font-semibold border-b border-[#69f6b8] pb-1 text-sm" href="/privacy-policy">Privacy</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors text-sm font-medium" href="/terms">Terms</a>
 </div>
 <div class="flex items-center gap-4">
-<button onclick="window.location.href='editor.html'" class="bg-primary-container text-on-primary-container px-6 py-2 rounded-xl text-sm font-bold glow-hover scale-95 active:scale-90 transition-transform">
+<button class="md:hidden text-primary" onclick="document.getElementById('pp-mobile-menu').classList.toggle('hidden')">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<button onclick="window.location.href='/editor'" class="hidden md:block bg-primary-container text-on-primary-container px-6 py-2 rounded-xl text-sm font-bold glow-hover scale-95 active:scale-90 transition-transform">
                     Try AI Editor
                 </button>
 </div>
 <div class="bg-gradient-to-r from-transparent via-[#40485d]/15 to-transparent h-[1px] w-full absolute bottom-0 left-0"></div>
+</div>
+<div id="pp-mobile-menu" class="hidden md:hidden bg-[#060e20]/95 backdrop-blur-xl border-t border-[#40485d]/20 px-8 py-4 flex flex-col gap-4">
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors text-sm" href="/">Home</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors text-sm" href="/how-it-works">How It Works</a>
+<a class="text-[#69f6b8] font-semibold text-sm" href="/privacy-policy">Privacy</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors text-sm" href="/terms">Terms</a>
+<button onclick="window.location.href='/editor'" class="bg-primary-container text-on-primary-container px-6 py-2 rounded-xl text-sm font-bold w-fit">Try AI Editor</button>
 </div>
 </nav>
 <main class="pt-32 pb-24 px-6 max-w-4xl mx-auto">
@@ -239,10 +249,13 @@
 <footer class="w-full py-12 mt-auto bg-[#091328] border-t border-[#40485d]/10">
 <div class="flex flex-col md:flex-row justify-between items-center px-12 gap-6 max-w-7xl mx-auto">
 <div class="text-lg font-bold text-[#a3aac4] font-headline">
-                The Digital Curator AI
+                Ethereal Tone AI
             </div>
-
-<p class="text-sm font-medium Inter text-[#a3aac4] opacity-80">
+<div class="flex gap-8 text-sm font-medium text-[#a3aac4]">
+<a class="hover:text-white transition-colors opacity-80 hover:opacity-100" href="/privacy-policy">Privacy Policy</a>
+<a class="hover:text-white transition-colors opacity-80 hover:opacity-100" href="/terms">Terms of Service</a>
+</div>
+<p class="text-sm font-medium text-[#a3aac4] opacity-80">
                 © 2026 Ethereal Tone AI. Editorial Excellence Guaranteed.
             </p>
 </div>

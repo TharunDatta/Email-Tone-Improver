@@ -95,22 +95,32 @@
 <!-- TopNavBar -->
 <nav class="fixed top-0 w-full z-50 backdrop-blur-md bg-opacity-80 bg-[#060e20]">
 <div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
-<a href="index.html" class="text-xl font-bold tracking-tight text-[#69f6b8] font-headline">
+<a href="/" class="text-xl font-bold tracking-tight text-[#69f6b8] font-headline">
                 Ethereal Tone
             </a>
 <div class="hidden md:flex items-center space-x-8">
-<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors font-body text-sm" href="index.html">Home</a>
-<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors font-body text-sm" href="how-it-works.html">How It Works</a>
-<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors font-body text-sm" href="privacy-policy.html">Privacy</a>
-<a class="text-[#69f6b8] font-semibold border-b border-[#69f6b8] pb-1 font-body text-sm" href="terms.html">Terms</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors font-body text-sm" href="/">Home</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors font-body text-sm" href="/how-it-works">How It Works</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors font-body text-sm" href="/privacy-policy">Privacy</a>
+<a class="text-[#69f6b8] font-semibold border-b border-[#69f6b8] pb-1 font-body text-sm" href="/terms">Terms</a>
 </div>
 <div class="flex items-center space-x-4">
-<button onclick="window.location.href='editor.html'" class="bg-[#06b77f] text-[#002919] px-6 py-2 rounded-xl text-sm font-semibold scale-95 active:scale-90 transition-transform shadow-[0_0_20px_rgba(105,246,184,0.3)]">
+<button class="md:hidden text-primary" onclick="document.getElementById('terms-mobile-menu').classList.toggle('hidden')">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<button onclick="window.location.href='/editor'" class="hidden md:block bg-[#06b77f] text-[#002919] px-6 py-2 rounded-xl text-sm font-semibold scale-95 active:scale-90 transition-transform shadow-[0_0_20px_rgba(105,246,184,0.3)]">
                     Try AI Editor
                 </button>
 </div>
 </div>
-<div class="bg-gradient-to-r from-transparent via-[#40485d]/15 to-transparent h-[1px] w-full absolute bottom-0"></div>
+<div id="terms-mobile-menu" class="hidden md:hidden bg-[#060e20]/95 backdrop-blur-xl border-t border-[#40485d]/20 px-8 py-4 flex flex-col gap-4">
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors text-sm" href="/">Home</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors text-sm" href="/how-it-works">How It Works</a>
+<a class="text-[#a3aac4] hover:text-[#69f6b8] transition-colors text-sm" href="/privacy-policy">Privacy</a>
+<a class="text-[#69f6b8] font-semibold text-sm" href="/terms">Terms</a>
+<button onclick="window.location.href='/editor'" class="bg-[#06b77f] text-[#002919] px-6 py-2 rounded-xl text-sm font-bold w-fit">Try AI Editor</button>
+</div>
+<div class="bg-gradient-to-r from-transparent via-[#40485d]/15 to-transparent h-[1px] w-full absolute bottom-0 left-0"></div>
 </nav>
 <!-- Main Content Canvas -->
 <main class="flex-grow pt-32 pb-24 px-6">
@@ -199,15 +209,15 @@
 <!-- Footer -->
 <footer class="w-full py-12 mt-auto bg-[#091328] border-t border-[#40485d]/10">
 <div class="flex flex-col md:flex-row justify-between items-center px-12 gap-6 max-w-7xl mx-auto">
-<a href="index.html" class="text-lg font-bold text-[#a3aac4] font-headline">
+<a href="/" class="text-lg font-bold text-[#a3aac4] font-headline">
                 Ethereal Tone
             </a>
-<div class="text-sm font-medium Inter text-[#a3aac4] opacity-80">
+<div class="text-sm font-medium text-[#a3aac4] font-body opacity-80">
                 © 2026 Ethereal Tone AI. Editorial Excellence Guaranteed.
             </div>
 <div class="flex gap-8">
-<a class="text-sm font-medium text-[#a3aac4] hover:text-white transition-colors" href="privacy-policy.html">Privacy Policy</a>
-<a class="text-sm font-medium text-[#a3aac4] hover:text-white transition-colors" href="terms.html">Terms of Service</a>
+<a class="text-sm font-medium text-[#a3aac4] hover:text-white transition-colors" href="/privacy-policy">Privacy Policy</a>
+<a class="text-sm font-medium text-[#a3aac4] hover:text-white transition-colors" href="/terms">Terms of Service</a>
 </div>
 </div>
 </footer>

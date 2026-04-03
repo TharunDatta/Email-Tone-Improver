@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | Ethereal Tone AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&amp;family=Inter:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-tint": "#69f6b8",
+                        "inverse-primary": "#006d4a",
+                        "secondary-fixed-dim": "#f6ba1e",
+                        "surface-container-lowest": "#000000",
+                        "primary": "#69f6b8",
+                        "on-tertiary-container": "#1f0001",
+                        "surface-container-low": "#091328",
+                        "tertiary-fixed-dim": "#ff7b74",
+                        "outline": "#6d758c",
+                        "on-primary": "#005a3c",
+                        "surface": "#060e20",
+                        "on-secondary-fixed-variant": "#684c00",
+                        "error-container": "#9f0519",
+                        "on-tertiary": "#490005",
+                        "secondary-fixed": "#ffca51",
+                        "secondary-dim": "#edb210",
+                        "primary-fixed": "#69f6b8",
+                        "on-primary-fixed": "#00452d",
+                        "primary-fixed-dim": "#58e7ab",
+                        "on-error-container": "#ffa8a3",
+                        "secondary-container": "#795900",
+                        "on-error": "#490006",
+                        "on-surface-variant": "#a3aac4",
+                        "inverse-on-surface": "#4d556b",
+                        "surface-container-highest": "#192540",
+                        "tertiary-dim": "#ff716a",
+                        "outline-variant": "#40485d",
+                        "primary-dim": "#58e7ab",
+                        "on-tertiary-fixed": "#3a0003",
+                        "on-secondary": "#563e00",
+                        "surface-dim": "#060e20",
+                        "surface-container-high": "#141f38",
+                        "primary-container": "#06b77f",
+                        "tertiary": "#ff716a",
+                        "inverse-surface": "#faf8ff",
+                        "error": "#ff716c",
+                        "error-dim": "#d7383b",
+                        "background": "#060e20",
+                        "on-secondary-fixed": "#443100",
+                        "on-primary-fixed-variant": "#006544",
+                        "on-background": "#dee5ff",
+                        "on-surface": "#dee5ff",
+                        "on-primary-container": "#002919",
+                        "surface-container": "#0f1930",
+                        "on-secondary-container": "#fff6ed",
+                        "tertiary-container": "#fd4e4d",
+                        "surface-bright": "#1f2b49",
+                        "secondary": "#fcc025",
+                        "on-tertiary-fixed-variant": "#79000e",
+                        "tertiary-fixed": "#ff928b",
+                        "surface-variant": "#192540"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(25, 37, 64, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .editorial-shadow {
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.5);
+        }
+        .gradient-glow {
+            box-shadow: 0 0 30px rgba(105, 246, 184, 0.15);
+        }
+        .input-focus-gradient:focus-within {
+            background: linear-gradient(to right, #69f6b8, transparent) bottom / 100% 2px no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary selection:text-on-primary-container min-h-screen flex flex-col">
+<!-- Ambient Background Elements -->
+<div class="fixed inset-0 pointer-events-none overflow-hidden">
+<div class="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-0 right-0 w-[40%] h-[40%] bg-secondary/5 rounded-full blur-[100px]"></div>
+</div>
+<!-- Main Auth Canvas -->
+<main class="relative flex-grow flex items-center justify-center px-6 py-12">
+<div class="w-full max-auto grid lg:grid-cols-2 max-w-6xl items-center gap-16">
+<!-- Left Column: Branding/Visual -->
+<div class="hidden lg:flex flex-col space-y-8">
+<div class="space-y-4">
+<span class="font-label text-primary tracking-[0.2em] text-[10px] uppercase">Ethereal Tone AI</span>
+<h1 class="font-headline text-display-lg leading-tight tracking-tighter text-on-surface">
+                        Refine your <br/>
+<span class="text-primary italic">AI Tone</span>
+</h1>
+<p class="text-on-surface-variant text-lg max-w-md font-light leading-relaxed">
+                        Access your editorial studio. Harmonize human intent with artificial intelligence through the lens of Ethereal.
+                    </p>
+</div>
+<div class="relative w-full aspect-video rounded-xl overflow-hidden glass-card p-1">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent"></div>
+<img alt="Abstract digital waves" class="w-full h-full object-cover rounded-lg opacity-60" data-alt="Abstract flowing 3D mesh in deep emerald and navy blue colors with soft glowing highlights and deep cinematic shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVhJJGh9hafIkhf_T8V1M2Se7e-NTXO3ntrfUGHJVs3fPBURb0_0br7JwitpEPTOjdLdbaaDHOr9LSxGjA19TNxL_ofCOmcDR5ae9MP9_5EEJo5KrM8LDDO2fkp4cW2XM61oXOi85N4MOba-VWQnVtbP87Jo5m53PLQkE1VgaUnfCSEhH5rw_UZr43me9jTynrtTLr5IMX5i6GgvFqPeMIWPcGexD-ieCAb8hWGr2KhftBGiqweuIbvEyTKlJ4QdCrdsHqHIdq30JP"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="flex items-center gap-4 bg-surface/80 backdrop-blur-md px-6 py-4 rounded-xl editorial-shadow">
+<span class="material-symbols-outlined text-primary text-3xl">analytics</span>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-primary font-bold">Resonance Score</span>
+<span class="font-headline text-2xl text-on-surface font-light">98.4%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Login Form -->
+<div class="w-full max-w-md mx-auto">
+<div class="glass-card rounded-3xl p-8 md:p-12 editorial-shadow border border-outline-variant/10 relative">
+<!-- Form Header -->
+<div class="mb-10 text-center lg:text-left">
+<div class="flex justify-center lg:justify-start items-center gap-2 mb-6">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center gradient-glow">
+<span class="material-symbols-outlined text-on-primary-container font-bold">temp_preferences_custom</span>
+</div>
+<span class="font-headline font-extrabold text-xl tracking-tighter text-primary">Ethereal Tone AI</span>
+</div>
+<h2 class="font-headline text-headline-md text-on-surface mb-2">Welcome Back</h2>
+<p class="text-on-surface-variant text-sm">Please enter your credentials to continue.</p>
+</div>
+<!-- Input Fields -->
+<form class="space-y-6" id="login-form" onsubmit="handleLogin(event)">
+<div class="space-y-2">
+<label class="block font-label text-[10px] text-on-surface-variant ml-1 tracking-widest uppercase">Email Address</label>
+<div class="relative group bg-surface-container-low rounded-lg transition-all duration-300 input-focus-gradient">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant/50 group-focus-within:text-primary transition-colors">alternate_email</span>
+<input class="w-full bg-transparent border-none py-4 pl-12 pr-4 focus:ring-0 text-on-surface placeholder:text-outline/40 font-body text-sm rounded-lg transition-all" placeholder="curator@ethereal.ai" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center px-1">
+<label class="font-label text-[10px] text-on-surface-variant tracking-widest uppercase">Password</label>
+<a class="text-[10px] text-primary/70 hover:text-primary tracking-widest uppercase transition-colors" href="/register">Reset Access</a>
+</div>
+<div class="relative group bg-surface-container-low rounded-lg transition-all duration-300 input-focus-gradient">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant/50 group-focus-within:text-primary transition-colors">lock</span>
+<input class="w-full bg-transparent border-none py-4 pl-12 pr-4 focus:ring-0 text-on-surface placeholder:text-outline/40 font-body text-sm rounded-lg transition-all" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant/50 hover:text-on-surface transition-colors text-sm" type="button" onclick="togglePasswordVisibility(event)">visibility</button>
+</div>
+</div>
+<div class="flex items-center gap-2 px-1">
+<input class="w-4 h-4 rounded bg-surface-container-high border-outline-variant text-primary focus:ring-primary/20 transition-all" id="remember" type="checkbox"/>
+<label class="text-xs text-on-surface-variant cursor-pointer select-none" for="remember">Remember this session</label>
+</div>
+<button type="submit" class="w-full bg-primary-container text-on-primary-container font-headline font-bold py-4 rounded-xl gradient-glow hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3">
+<span id="login-btn-text">Secure Login</span>
+<span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+</form>
+<!-- Footer Links -->
+<div class="mt-10 pt-8 border-t border-outline-variant/10 text-center">
+<p class="text-sm text-on-surface-variant">
+                            New to the studio? 
+                            <a class="text-primary font-semibold hover:underline underline-offset-4 ml-1" href="/register">Sign Up</a>
+</p>
+</div>
+</div>
+<!-- Accessibility/Status Note -->
+<div class="mt-6 flex justify-center items-center gap-6 text-[10px] tracking-widest text-outline/60 uppercase">
+<div class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+                        System Operational
+                    </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">verified_user</span>
+                        256-bit AES
+                    </div>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Footer Anchor -->
+<footer class="w-full py-8 mt-auto flex flex-col items-center gap-4 px-8 text-center bg-surface">
+<div class="h-[1px] w-full max-w-sm bg-gradient-to-r from-transparent via-outline-variant/20 to-transparent mb-2"></div>
+<div class="font-body text-[10px] tracking-widest uppercase text-on-surface-variant opacity-60">
+            © 2024 Ethereal Tone AI. Built for Digital Curators.
+        </div>
+<div class="flex gap-6">
+<a class="font-body text-[10px] tracking-widest uppercase text-inverse-on-surface hover:text-primary transition-colors underline-offset-4 hover:underline" href="/privacy-policy">Privacy Policy</a>
+<a class="font-body text-[10px] tracking-widest uppercase text-inverse-on-surface hover:text-primary transition-colors underline-offset-4 hover:underline" href="/terms">Terms of Service</a>
+</div>
+</footer>
+<div id="error-msg" class="hidden fixed top-6 left-1/2 -translate-x-1/2 bg-error/20 border border-error/40 text-error px-6 py-3 rounded-xl text-sm font-medium z-50"></div>
+<script>
+// On page load — auto-fill email if remembered
+window.addEventListener('DOMContentLoaded', () => {
+    const savedEmail = localStorage.getItem('rememberedEmail');
+    const emailInput = document.querySelector('input[type="email"]');
+    const rememberCheckbox = document.getElementById('remember');
+    if (savedEmail && emailInput) {
+        emailInput.value = savedEmail;
+        if (rememberCheckbox) rememberCheckbox.checked = true;
+    }
+});
+
+async function handleLogin(e) {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.querySelector('input[type="email"]').value;
+    const password = form.querySelector('input[placeholder*="•"]').value;
+    const remember = document.getElementById('remember').checked;
+    const btn = document.getElementById('login-btn-text');
+    btn.textContent = 'Logging in...';
+
+    // Remember Me — save or clear email
+    if (remember) {
+        localStorage.setItem('rememberedEmail', email);
+    } else {
+        localStorage.removeItem('rememberedEmail');
+    }
+
+    try {
+        const res = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+        let data;
+        try {
+            data = await res.json();
+        } catch (parseErr) {
+            throw new Error('Invalid response from server. Please try again.');
+        }
+        if (!res.ok) throw new Error(data.error || 'Login failed');
+        window.location.href = '/editor';
+    } catch (err) {
+        const msg = document.getElementById('error-msg');
+        msg.textContent = err.message || 'An error occurred. Please try again.';
+        msg.classList.remove('hidden');
+        setTimeout(() => msg.classList.add('hidden'), 4000);
+    } finally {
+        btn.textContent = 'Secure Login';
+    }
+}
+
+function togglePasswordVisibility(e) {
+    e.preventDefault();
+    const container = e.target.closest('.relative');
+    const input = container ? container.querySelector('input') : document.querySelector('input[placeholder="••••••••"]');
+    if (input) {
+        if (input.type === 'password') {
+            input.type = 'text';
+            e.target.textContent = 'visibility_off';
+        } else {
+            input.type = 'password';
+            e.target.textContent = 'visibility';
+        }
+    }
+}
+</script>
+</body></html>

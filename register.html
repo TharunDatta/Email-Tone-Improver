@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sign Up | Ethereal Tone AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#69f6b8",
+              "inverse-primary": "#006d4a",
+              "secondary-fixed-dim": "#f6ba1e",
+              "surface-container-lowest": "#000000",
+              "primary": "#69f6b8",
+              "on-tertiary-container": "#1f0001",
+              "surface-container-low": "#091328",
+              "tertiary-fixed-dim": "#ff7b74",
+              "outline": "#6d758c",
+              "on-primary": "#005a3c",
+              "surface": "#060e20",
+              "on-secondary-fixed-variant": "#684c00",
+              "error-container": "#9f0519",
+              "on-tertiary": "#490005",
+              "secondary-fixed": "#ffca51",
+              "secondary-dim": "#edb210",
+              "primary-fixed": "#69f6b8",
+              "on-primary-fixed": "#00452d",
+              "primary-fixed-dim": "#58e7ab",
+              "on-error-container": "#ffa8a3",
+              "secondary-container": "#795900",
+              "on-error": "#490006",
+              "on-surface-variant": "#a3aac4",
+              "inverse-on-surface": "#4d556b",
+              "surface-container-highest": "#192540",
+              "tertiary-dim": "#ff716a",
+              "outline-variant": "#40485d",
+              "primary-dim": "#58e7ab",
+              "on-tertiary-fixed": "#3a0003",
+              "on-secondary": "#563e00",
+              "surface-dim": "#060e20",
+              "surface-container-high": "#141f38",
+              "primary-container": "#06b77f",
+              "tertiary": "#ff716a",
+              "inverse-surface": "#faf8ff",
+              "error": "#ff716c",
+              "error-dim": "#d7383b",
+              "background": "#060e20",
+              "on-secondary-fixed": "#443100",
+              "on-primary-fixed-variant": "#006544",
+              "on-background": "#dee5ff",
+              "on-surface": "#dee5ff",
+              "on-primary-container": "#002919",
+              "surface-container": "#0f1930",
+              "on-secondary-container": "#fff6ed",
+              "tertiary-container": "#fd4e4d",
+              "surface-bright": "#1f2b49",
+              "secondary": "#fcc025",
+              "on-tertiary-fixed-variant": "#79000e",
+              "tertiary-fixed": "#ff928b",
+              "surface-variant": "#192540"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #060e20; }
+        .glass-card {
+            background: rgba(25, 37, 64, 0.4);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tone-glow {
+            box-shadow: 0 0 40px rgba(105, 246, 184, 0.1);
+        }
+        .cta-glow {
+            box-shadow: 0 0 20px rgba(105, 246, 184, 0.3);
+        }
+    </style>
+</head>
+<body class="text-on-surface min-h-screen flex flex-col overflow-x-hidden">
+<!-- Hero Background Visual -->
+<div class="fixed inset-0 z-0">
+<div class="absolute top-[-10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-primary/5 blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-tertiary/5 blur-[120px]"></div>
+</div>
+<!-- Main Content -->
+<main class="relative z-10 flex-grow flex items-center justify-center px-6 py-12">
+<div class="w-full max-w-[1100px] grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Left Side: Editorial Branding -->
+<div class="lg:col-span-7 space-y-8">
+<div class="space-y-4">
+<span class="text-primary font-label text-xs tracking-widest uppercase">Ethereal Tone AI</span>
+<h1 class="text-display-lg font-headline leading-tight tracking-tighter text-on-surface">
+                        Master the art of <br/>
+<span class="text-primary italic">Digital Resonance.</span>
+</h1>
+<p class="text-body-lg text-on-surface-variant max-w-md leading-relaxed">
+                        Join an elite circle of digital curators. Ethereal Tone AI harmonizes your communication with surgical precision.
+                    </p>
+</div>
+<!-- Bento Style Feature Preview -->
+<div class="grid grid-cols-2 gap-4">
+<div class="surface-container-low p-6 rounded-xl border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary mb-3">auto_awesome</span>
+<h3 class="font-headline text-lg text-on-surface">AI Tonal Calibration</h3>
+<p class="text-xs text-on-surface-variant mt-2">Adjust emotional frequency with precision sliders.</p>
+</div>
+<div class="surface-container p-6 rounded-xl border border-outline-variant/10">
+<span class="material-symbols-outlined text-secondary mb-3">psychology</span>
+<h3 class="font-headline text-lg text-on-surface">Semantic Impact</h3>
+<p class="text-xs text-on-surface-variant mt-2">Predict how your audience feels before you hit send.</p>
+</div>
+</div>
+</div>
+<!-- Right Side: Signup Form -->
+<div class="lg:col-span-5">
+<div class="glass-card p-8 lg:p-10 rounded-3xl border border-outline-variant/15 tone-glow">
+<div class="mb-8">
+<h2 class="text-headline-md font-headline text-on-surface mb-2">Create Account</h2>
+<p class="text-on-surface-variant text-sm">Elevate your tone to professional standards.</p>
+</div>
+<form action="#" class="space-y-6" id="register-form" onsubmit="handleRegister(event)">
+<!-- Full Name Field -->
+<div class="space-y-2">
+<label class="text-label-md text-on-surface-variant tracking-wider">Full Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">person</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 text-on-surface focus:ring-1 focus:ring-primary/50 transition-all placeholder:text-on-surface-variant/30" placeholder="Julian Vane" type="text"/>
+</div>
+</div>
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="text-label-md text-on-surface-variant tracking-wider">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">alternate_email</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 text-on-surface focus:ring-1 focus:ring-primary/50 transition-all placeholder:text-on-surface-variant/30" placeholder="curator@ethereal.ai" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<label class="text-label-md text-on-surface-variant tracking-wider">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-xl">lock</span>
+<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-12 text-on-surface focus:ring-1 focus:ring-primary/50 transition-all placeholder:text-on-surface-variant/30" placeholder="••••••••••••" type="password"/>
+<button class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant/50 hover:text-on-surface transition-colors text-sm" type="button" onclick="togglePasswordVisibility(event)">visibility</button>
+</div>
+</div>
+<!-- Terms -->
+<div class="flex items-start gap-3 pt-2">
+<input class="mt-1 rounded border-outline-variant bg-surface-container-low text-primary focus:ring-primary" type="checkbox"/>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                                I agree to the <a class="text-primary hover:underline transition-all" href="/terms">Terms of Service</a> and <a class="text-primary hover:underline transition-all" href="/privacy-policy">Privacy Policy</a>.
+                            </p>
+</div>
+<!-- Register CTA -->
+<button class="w-full bg-primary-container text-on-primary-container font-headline font-bold py-5 rounded-xl cta-glow hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 mt-4" type="submit">
+                            <span id="register-btn-text">Register</span>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</form>
+<div class="mt-10 pt-8 border-t border-outline-variant/10 text-center">
+<p class="text-on-surface-variant text-sm">
+                            Already a curator? 
+                            <a class="text-primary font-semibold ml-1 hover:underline underline-offset-4" href="/login">Login to your account</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="relative z-10 w-full py-8 mt-auto border-t border-outline-variant/10">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-[10px] tracking-widest uppercase font-body text-on-surface-variant opacity-60">
+                © 2024 Ethereal Tone AI. Built for Digital Curators.
+            </div>
+<div class="flex gap-8 text-[10px] tracking-widest uppercase font-body text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="/privacy-policy">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="/terms">Terms of Service</a>
+</div>
+</div>
+</footer>
+<div id="error-msg" class="hidden fixed top-6 left-1/2 -translate-x-1/2 bg-error/20 border border-error/40 text-error px-6 py-3 rounded-xl text-sm font-medium z-50"></div>
+<script>
+async function handleRegister(e) {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.querySelector('input[type="text"]').value;
+    const email = form.querySelector('input[type="email"]').value;
+    const password = form.querySelector('input[placeholder*="•"]').value;
+    const agreed = form.querySelector('input[type="checkbox"]').checked;
+    if (!agreed) { alert('Please agree to the Terms of Service and Privacy Policy.'); return; }
+    const btn = document.getElementById('register-btn-text');
+    btn.textContent = 'Creating account...';
+    try {
+        const res = await fetch('/api/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, password })
+        });
+        let data;
+        try {
+            data = await res.json();
+        } catch (parseErr) {
+            throw new Error('Invalid response from server. Please try again.');
+        }
+        if (!res.ok) throw new Error(data.error || 'Registration failed');
+        window.location.href = '/editor';
+    } catch (err) {
+        const msg = document.getElementById('error-msg');
+        msg.textContent = err.message || 'An error occurred. Please try again.';
+        msg.classList.remove('hidden');
+        setTimeout(() => msg.classList.add('hidden'), 4000);
+    } finally {
+        btn.textContent = 'Register';
+    }
+}
+
+function togglePasswordVisibility(e) {
+    e.preventDefault();
+    const container = e.target.closest('.relative');
+    const input = container ? container.querySelector('input') : document.querySelector('input[placeholder="••••••••••••"]');
+    if (input) {
+        if (input.type === 'password') {
+            input.type = 'text';
+            e.target.textContent = 'visibility_off';
+        } else {
+            input.type = 'password';
+            e.target.textContent = 'visibility';
+        }
+    }
+}
+</script>
+</body></html>

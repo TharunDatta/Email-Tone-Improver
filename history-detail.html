@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Conversion Detail - Ethereal Tone AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #060e20;
+            color: #dee5ff;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(25, 37, 64, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .editorial-gradient-border {
+            position: relative;
+        }
+        .editorial-gradient-border::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, #40485d 50%, transparent 100%);
+            opacity: 0.3;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed": "#443100",
+              "error": "#ff716c",
+              "surface-container-highest": "#192540",
+              "error-container": "#9f0519",
+              "inverse-primary": "#006d4a",
+              "tertiary-fixed": "#ff928b",
+              "surface-container": "#0f1930",
+              "error-dim": "#d7383b",
+              "on-background": "#dee5ff",
+              "surface-variant": "#192540",
+              "on-primary-fixed": "#00452d",
+              "tertiary-container": "#fd4e4d",
+              "primary-container": "#06b77f",
+              "inverse-on-surface": "#4d556b",
+              "on-error-container": "#ffa8a3",
+              "secondary-fixed": "#ffca51",
+              "secondary-fixed-dim": "#f6ba1e",
+              "on-surface-variant": "#a3aac4",
+              "secondary-dim": "#edb210",
+              "outline": "#6d758c",
+              "tertiary-fixed-dim": "#ff7b74",
+              "primary-fixed": "#69f6b8",
+              "tertiary": "#ff716a",
+              "on-surface": "#dee5ff",
+              "secondary-container": "#795900",
+              "primary-fixed-dim": "#58e7ab",
+              "on-primary-container": "#002919",
+              "inverse-surface": "#faf8ff",
+              "surface-bright": "#1f2b49",
+              "on-primary-fixed-variant": "#006544",
+              "on-tertiary-fixed-variant": "#79000e",
+              "secondary": "#fcc025",
+              "surface-container-low": "#091328",
+              "on-error": "#490006",
+              "on-secondary": "#563e00",
+              "on-tertiary-container": "#1f0001",
+              "background": "#060e20",
+              "on-tertiary": "#490005",
+              "on-primary": "#005a3c",
+              "on-tertiary-fixed": "#3a0003",
+              "surface-dim": "#060e20",
+              "surface-tint": "#69f6b8",
+              "surface-container-lowest": "#000000",
+              "surface-container-high": "#141f38",
+              "surface": "#060e20",
+              "primary-dim": "#58e7ab",
+              "on-secondary-container": "#fff6ed",
+              "primary": "#69f6b8",
+              "tertiary-dim": "#ff716a",
+              "outline-variant": "#40485d",
+              "on-secondary-fixed-variant": "#684c00"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-body text-on-background selection:bg-primary/30">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky z-50 bg-[#060e20] dark:bg-[#060e20] flex justify-between items-center px-8 py-4 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="auto_awesome">auto_awesome</span>
+<h1 class="font-['Manrope'] text-xl font-bold tracking-tight text-[#69f6b8]">Ethereal Tone AI</h1>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex items-center gap-6 font-['Inter'] font-normal text-base">
+<a class="text-[#a3aac4] hover:bg-[#1f2b49]/80 hover:backdrop-blur-md transition-all duration-300 px-3 py-1 rounded-lg" href="/editor">Editor</a>
+<a class="text-[#69f6b8] font-semibold" href="/profile">History</a>
+<a class="text-[#a3aac4] hover:bg-[#1f2b49]/80 hover:backdrop-blur-md transition-all duration-300 px-3 py-1 rounded-lg" href="#">Analytics</a>
+</nav>
+<div class="flex items-center gap-4 border-l border-outline-variant/15 pl-6">
+<button class="material-symbols-outlined text-[#a3aac4] hover:text-[#69f6b8] transition-colors" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-[#a3aac4] hover:text-[#69f6b8] transition-colors" data-icon="settings">settings</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container">
+<img alt="User profile" data-alt="close-up portrait of a professional woman with soft studio lighting and a clean dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDv0I4LyJ9bhBK1RJqq4iuM9SPuOle0y7LLWc81DqLeuj24jI4JdVM2UDodT6gimoZqW5NyresXBiFKZ4c9KwaQ2O4IPcv66rfyI-TzEKyx4L8rLpzF5tWayShDMVBuGIdoJY32Nz-qMDjVMA0Zh21Rlvy9yrloVWl1J7npyA6ZqdMzQNyes3AtQxmCjSKqJ5q1eBs1qCrbAXYGAZj6J7eqCJzQ2a0HrT85peYqjcoeY0NFp-Qn5QO-1fpQtCo8_iqfFeHX2R6eHiX"/>
+</div>
+</div>
+</div>
+<div class="bg-gradient-to-r from-transparent via-[#40485d]/15 to-transparent h-[1px] w-full absolute bottom-0"></div>
+</header>
+<!-- Main Content Layout -->
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 pt-20 hidden md:flex flex-col bg-[#091328] dark:bg-[#091328] border-r border-[#40485d]/15 shadow-[40px_0_40px_rgba(0,0,0,0.06)] z-40">
+<div class="flex-grow flex flex-col px-4 py-6">
+<div class="flex flex-col gap-2 mb-8">
+<div class="flex items-center gap-3 px-4">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-sm" data-icon="edit_note">edit_note</span>
+</div>
+<div>
+<p class="font-['Manrope'] text-sm font-black text-[#69f6b8] uppercase tracking-wider">Ethereal Tone</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">Tone Assistant</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-1 font-['Inter'] text-sm tracking-wide">
+<a class="flex items-center gap-3 px-4 py-3 text-[#a3aac4] hover:text-[#69f6b8] hover:bg-[#0f1930] rounded-lg transition-all" href="/editor">
+<span class="material-symbols-outlined text-lg" data-icon="edit_note">edit_note</span>
+<span>Editor</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#69f6b8] font-bold border-r-2 border-[#69f6b8] bg-gradient-to-r from-[#69f6b8]/10 to-transparent transition-all" href="/profile">
+<span class="material-symbols-outlined text-lg" data-icon="history">history</span>
+<span>History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a3aac4] hover:text-[#69f6b8] hover:bg-[#0f1930] rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="insights">insights</span>
+<span>Analytics</span>
+</a>
+</nav>
+<div class="mt-8 px-4">
+<button class="w-full bg-primary-container text-on-primary-container font-bold py-3 rounded-xl flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(105,246,184,0.2)] active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                        New Draft
+                    </button>
+</div>
+<div class="mt-auto flex flex-col gap-1 border-t border-outline-variant/10 pt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-[#a3aac4] hover:text-[#69f6b8] transition-colors" href="/how-it-works">
+<span class="material-symbols-outlined text-lg" data-icon="help_outline">help_outline</span>
+                        Help
+                    </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a3aac4] hover:text-[#69f6b8] transition-colors" href="#" onclick="handleLogout(event)">
+<span class="material-symbols-outlined text-lg" data-icon="logout">logout</span>
+                        Logout
+                    </a>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-grow md:ml-64 px-6 md:px-12 py-8 bg-surface">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-end gap-6 mb-12">
+<div>
+<a class="flex items-center gap-2 mb-2 text-on-surface-variant cursor-pointer hover:text-primary transition-colors" onclick="window.location.href='/profile'">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_back">arrow_back</span>
+<span class="text-xs font-bold uppercase tracking-widest font-label">Back to History</span>
+</a>
+<h2 class="font-headline text-3xl md:text-5xl font-light tracking-tight text-on-surface">Archive: Project Alpha Pitch</h2>
+<p class="text-on-surface-variant mt-2 font-body">Detailed summary of the tonal refinement processed on Oct 14, 2023.</p>
+</div>
+<button id="reedit-btn" onclick="reEditDraft()" class="bg-primary-container text-on-primary-container px-6 py-3 rounded-xl font-bold flex items-center gap-2 hover:shadow-[0_0_20px_rgba(105,246,184,0.3)] active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="refresh">refresh</span>
+                    Re-edit this Draft
+                </button>
+</div>
+<!-- Bento Grid Content -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Left: Source Content -->
+<div class="md:col-span-6 flex flex-col gap-6">
+<div class="surface-container-low rounded-xl p-8 flex flex-col h-full border border-outline-variant/5">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline text-lg font-bold text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="history_edu">history_edu</span>
+                                Source Draft
+                            </h3>
+<span id="source-tone-badge" class="bg-secondary/15 text-secondary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">ORIGINAL</span>
+</div>
+<div id="source-text-block" class="bg-surface-container/50 rounded-lg p-6 flex-grow font-body text-on-surface/80 leading-relaxed italic">
+Loading...
+</div>
+</div>
+</div>
+<!-- Right: Improved Output -->
+<div class="md:col-span-6 flex flex-col gap-6">
+<div class="glass-panel rounded-xl p-8 flex flex-col h-full border border-primary/10 shadow-[0_20px_40px_rgba(0,0,0,0.2)]">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline text-lg font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="auto_fix_high">auto_fix_high</span>
+                                Improved Conversion
+                            </h3>
+<span id="improved-tone-badge" class="bg-primary/15 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">ENHANCED</span>
+</div>
+<div id="improved-email-block" class="bg-surface-container-high rounded-lg p-6 flex-grow font-body text-on-surface leading-relaxed text-lg border-b-2 border-primary/30">
+Loading...
+</div>
+</div>
+</div>
+<!-- Bottom Row: Metadata & Tone Spectrograph -->
+<div class="md:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Stats Card 1: Tone Shift -->
+<div class="surface-container rounded-xl p-6 border border-outline-variant/5">
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-4">Tone Evolution</p>
+<div class="flex items-center justify-between">
+<div class="text-center">
+<p id="tone-from" class="text-secondary text-xs font-bold">ORIGINAL</p>
+<span class="material-symbols-outlined text-3xl mt-1" data-icon="sentiment_satisfied">sentiment_satisfied</span>
+</div>
+<div class="flex-grow px-4">
+<div class="h-[2px] bg-gradient-to-r from-secondary via-primary to-primary rounded-full relative">
+<span class="material-symbols-outlined absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="text-center">
+<p id="tone-to" class="text-primary text-xs font-bold">ENHANCED</p>
+<span class="material-symbols-outlined text-3xl mt-1" data-icon="business_center">business_center</span>
+</div>
+</div>
+</div>
+<!-- Stats Card 2: Efficiency -->
+<div class="surface-container rounded-xl p-6 border border-outline-variant/5">
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest mb-2">Clarity Index</p>
+<div class="flex items-baseline gap-2">
+<span id="clarity-value" class="font-headline text-4xl font-bold text-primary">—</span>
+<span class="text-on-surface-variant text-sm">Efficiency Gain</span>
+</div>
+<div class="mt-4 w-full bg-surface-container-highest h-1.5 rounded-full overflow-hidden">
+<div id="clarity-bar-fill" class="bg-primary h-full" style="width:0%;box-shadow:0 0 10px rgba(105,246,184,0.5)"></div>
+</div>
+</div>
+<!-- Stats Card 3: Date/Meta -->
+<div class="surface-container rounded-xl p-6 border border-outline-variant/5 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<p class="text-on-surface-variant text-xs font-bold uppercase tracking-widest">Metadata</p>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="info">info</span>
+</div>
+<div class="space-y-1">
+<p id="meta-date" class="text-on-surface text-sm font-medium">Loading...</p>
+<p class="text-on-surface-variant text-xs">Runtime: 1.2s • AI Model: Curator-v4</p>
+</div>
+</div>
+</div>
+
+</div>
+</main>
+</div>
+<!-- Mobile Bottom NavBar -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 glass-panel border-t border-outline-variant/15 flex justify-around items-center py-4 px-6 z-50">
+<button class="flex flex-col items-center gap-1 text-[#a3aac4]">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Editor</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#69f6b8]">
+<span class="material-symbols-outlined" data-icon="history" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">History</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-[#a3aac4]">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Stats</span>
+</button>
+</div>
+</body>
+<script>
+let _currentEntry = null;
+
+// Tone → trait score mapping (0-100)
+const TONE_TRAITS = {
+    Professional: { authority: 85, clarity: 80, warmth: 30, urgency: 40, confidence: 90, humor: 5 },
+    Formal:       { authority: 90, clarity: 85, warmth: 15, urgency: 35, confidence: 88, humor: 2 },
+    Friendly:     { authority: 35, clarity: 65, warmth: 90, urgency: 20, confidence: 60, humor: 55 },
+    Casual:       { authority: 25, clarity: 60, warmth: 80, urgency: 15, confidence: 50, humor: 65 },
+    Urgent:       { authority: 70, clarity: 75, warmth: 20, urgency: 95, confidence: 80, humor: 5 },
+    Apologetic:   { authority: 20, clarity: 70, warmth: 75, urgency: 30, confidence: 35, humor: 10 },
+    Concise:      { authority: 60, clarity: 95, warmth: 25, urgency: 55, confidence: 75, humor: 5 },
+    Persuasive:   { authority: 80, clarity: 78, warmth: 50, urgency: 65, confidence: 85, humor: 20 },
+    Grateful:     { authority: 30, clarity: 65, warmth: 88, urgency: 15, confidence: 55, humor: 30 },
+};
+
+const TRAIT_COLORS = {
+    authority: { bar: '#69f6b8', label: '#69f6b8' },
+    clarity:   { bar: '#69f6b8', label: '#69f6b8' },
+    warmth:    { bar: '#fcc025', label: '#fcc025' },
+    urgency:   { bar: '#ff716a', label: '#ff716a' },
+    confidence:{ bar: '#58e7ab', label: '#58e7ab' },
+    humor:     { bar: '#a3aac4', label: '#a3aac4' },
+};
+
+(async () => {
+    const res = await fetch('/api/auth/me');
+    if (!res.ok) { window.location.href = '/login'; return; }
+})();
+
+async function handleLogout(e) {
+    e.preventDefault();
+    await fetch('/api/auth/logout', { method: 'POST' });
+    window.location.href = '/login';
+}
+
+// Load conversion detail
+(async () => {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    if (!id) return;
+    try {
+        const res = await fetch(`/api/history/${id}`);
+        if (!res.ok) return;
+        const { entry } = await res.json();
+        if (!entry) return;
+        _currentEntry = entry;
+
+        const tone = entry.selected_tone || '';
+        const dateStr = new Date(entry.created_at).toLocaleDateString('en-US', {month:'long', day:'numeric', year:'numeric'});
+        const dateShort = new Date(entry.created_at).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'});
+
+        // Page header
+        document.querySelector('h2.font-headline').textContent = `Archive: ${tone} Conversion`;
+        document.querySelector('p.text-on-surface-variant.mt-2').textContent = `Processed on ${dateStr}`;
+
+        // Source text & badge
+        const sourceEl = document.getElementById('source-text-block');
+        if (sourceEl) sourceEl.textContent = `"${entry.source_text || ''}"`;
+        const sourceBadge = document.getElementById('source-tone-badge');
+        if (sourceBadge) sourceBadge.textContent = 'ORIGINAL';
+
+        // Improved email & badge
+        const improvedEl = document.getElementById('improved-email-block');
+        if (improvedEl) improvedEl.innerHTML = entry.improved_email || '';
+        const improvedBadge = document.getElementById('improved-tone-badge');
+        if (improvedBadge) improvedBadge.textContent = tone.toUpperCase();
+
+        // Tone evolution
+        document.getElementById('tone-from').textContent = 'ORIGINAL';
+        document.getElementById('tone-to').textContent = tone.toUpperCase();
+
+        // Clarity index
+        const clarity = entry.clarity_score || 0;
+        document.getElementById('clarity-value').textContent = `${clarity}%`;
+        document.getElementById('clarity-bar-fill').style.width = `${clarity}%`;
+
+        // Metadata date
+        document.getElementById('meta-date').textContent = `Processed ${dateShort}`;
+
+    } catch (err) { console.error('Failed to load detail:', err); }
+})();
+
+function reEditDraft() {
+    if (!_currentEntry) return;
+    localStorage.setItem('reEditSourceText', _currentEntry.source_text || '');
+    localStorage.setItem('reEditTone', _currentEntry.selected_tone || 'Professional');
+    window.location.href = '/editor';
+}
+</script>
+</html>

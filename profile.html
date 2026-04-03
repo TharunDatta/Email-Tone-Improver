@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My History - Ethereal Tone AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-secondary-fixed": "#443100",
+            "error": "#ff716c",
+            "surface-container-highest": "#192540",
+            "error-container": "#9f0519",
+            "inverse-primary": "#006d4a",
+            "tertiary-fixed": "#ff928b",
+            "surface-container": "#0f1930",
+            "error-dim": "#d7383b",
+            "on-background": "#dee5ff",
+            "surface-variant": "#192540",
+            "on-primary-fixed": "#00452d",
+            "tertiary-container": "#fd4e4d",
+            "primary-container": "#06b77f",
+            "inverse-on-surface": "#4d556b",
+            "on-error-container": "#ffa8a3",
+            "secondary-fixed": "#ffca51",
+            "secondary-fixed-dim": "#f6ba1e",
+            "on-surface-variant": "#a3aac4",
+            "secondary-dim": "#edb210",
+            "outline": "#6d758c",
+            "tertiary-fixed-dim": "#ff7b74",
+            "primary-fixed": "#69f6b8",
+            "tertiary": "#ff716a",
+            "on-surface": "#dee5ff",
+            "secondary-container": "#795900",
+            "primary-fixed-dim": "#58e7ab",
+            "on-primary-container": "#002919",
+            "inverse-surface": "#faf8ff",
+            "surface-bright": "#1f2b49",
+            "on-primary-fixed-variant": "#006544",
+            "on-tertiary-fixed-variant": "#79000e",
+            "secondary": "#fcc025",
+            "surface-container-low": "#091328",
+            "on-error": "#490006",
+            "on-secondary": "#563e00",
+            "on-tertiary-container": "#1f0001",
+            "background": "#060e20",
+            "on-tertiary": "#490005",
+            "on-primary": "#005a3c",
+            "on-tertiary-fixed": "#3a0003",
+            "surface-dim": "#060e20",
+            "surface-tint": "#69f6b8",
+            "surface-container-lowest": "#000000",
+            "surface-container-high": "#141f38",
+            "surface": "#060e20",
+            "primary-dim": "#58e7ab",
+            "on-secondary-container": "#fff6ed",
+            "primary": "#69f6b8",
+            "tertiary-dim": "#ff716a",
+            "outline-variant": "#40485d",
+            "on-secondary-fixed-variant": "#684c00"
+          },
+          fontFamily: {
+            "headline": ["Manrope"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-card {
+      background: rgba(25, 37, 64, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .glow-button:hover {
+      box-shadow: 0 0 20px rgba(105, 246, 184, 0.3);
+    }
+    body {
+      background-color: #060e20;
+      color: #dee5ff;
+    }
+  </style>
+</head>
+<body class="font-body selection:bg-primary/30">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#091328] border-r border-[#40485d]/15 flex flex-col py-6 px-4 z-50 shadow-[40px_0_40px_rgba(0,0,0,0.06)]">
+<div class="flex items-center gap-3 mb-10 px-2">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-primary-container flex items-center justify-center shadow-[0_0_15px_rgba(105,246,184,0.4)]">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h1 class="font-headline text-lg font-black text-[#69f6b8] leading-none">Ethereal Tone AI</h1>
+<p class="font-body text-xs text-on-surface-variant tracking-wide mt-1">Tone Assistant</p>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-body text-sm tracking-wide text-[#a3aac4] hover:text-[#69f6b8] hover:bg-[#0f1930] transition-all" href="/editor">
+<span class="material-symbols-outlined text-[20px]">edit_note</span>
+<span>Editor</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-body text-sm tracking-wide text-[#69f6b8] font-bold border-r-2 border-[#69f6b8] bg-gradient-to-r from-[#69f6b8]/10 to-transparent transition-all" href="/profile">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">history</span>
+<span>History</span>
+</a>
+
+</nav>
+<div class="mt-auto space-y-2 border-t border-[#40485d]/15 pt-6">
+<button onclick="window.location.href='/editor'" class="w-full mb-6 bg-primary-container text-on-primary-container py-3 rounded-xl font-headline font-bold text-sm glow-button transition-all active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+        New Draft
+      </button>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-body text-sm tracking-wide text-[#a3aac4] hover:text-[#69f6b8] transition-colors" href="/how-it-works">
+<span class="material-symbols-outlined text-[20px]">help_outline</span>
+<span>Help</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl font-body text-sm tracking-wide text-error/80 hover:text-error transition-colors" href="#" onclick="handleLogout(event)">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen p-8 lg:p-12">
+<!-- Top Bar / Header -->
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div class="flex items-center gap-6">
+<div class="relative">
+<div class="w-24 h-24 rounded-full p-[2px] bg-gradient-to-tr from-primary via-outline to-transparent">
+<img alt="User profile" class="w-full h-full rounded-full object-cover border-4 border-background" data-alt="Professional headshot of a creative director in a dark studio setting with soft rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-fxLanljomWsBH1SsSIyYOEGiVSJ7D1pM_NKOUXGG108TdNPAxzqqiCjd6dyqtR8sGyNlDWzAxUG3QTEw7OIkOCegd7ehYP8Miec8UFTT_AKFZfIfHRMtVM2XzH1xVtyZZGJFrtMlK_hP2OYOk0zMIoWV2VMDvg_zUfEaeyNgPfq6F5k7FwECLio2Nh6MDHhL8jT1dItNAFVYF0SOYhf_FxChIZFTZt_yLc5x0Z4sIZ0sbGWmwD7nQrXx6rpaZcEoTJ-Ha9d2n4ib"/>
+</div>
+<div class="absolute bottom-1 right-1 w-6 h-6 bg-primary rounded-full border-2 border-background flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] text-on-primary-container" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div>
+<h2 class="font-headline text-display-lg text-on-surface leading-none mb-2">Julian Sterling</h2>
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span id="user-email" class="font-body text-sm">...</span>
+<div class="w-1 h-1 rounded-full bg-outline-variant"></div>
+<span class="font-label text-[10px] tracking-widest text-primary uppercase">Pro Member</span>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-low p-5 rounded-2xl border border-outline-variant/10 min-w-[160px]">
+<p class="font-label text-[10px] text-on-surface-variant mb-1 uppercase">Total Conversions</p>
+<p class="font-headline text-3xl font-bold text-primary">142</p>
+</div>
+</div>
+</header>
+<!-- Metrics Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<!-- Card: Top Tones -->
+<div class="md:col-span-2 glass-card rounded-3xl p-8 border border-outline-variant/15 relative overflow-hidden group">
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 blur-[80px] rounded-full group-hover:bg-primary/10 transition-all duration-700"></div>
+<h3 class="font-headline text-title-lg text-on-surface mb-6">Top Tones Used</h3>
+<div id="top-tones-container" class="flex flex-wrap gap-3">
+<span class="text-on-surface-variant text-sm">Loading...</span>
+</div>
+</div>
+<!-- Card: Total Words -->
+<div class="glass-card rounded-3xl p-8 border border-outline-variant/15 flex flex-col justify-center">
+<p class="font-label text-[10px] text-on-surface-variant mb-2 uppercase tracking-[0.2em]">Total Words Refined</p>
+<h3 id="words-refined" class="font-headline text-5xl font-black text-on-surface">—</h3>
+<p class="text-sm text-on-surface-variant flex items-center gap-1 mt-4">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+<span>from your conversions</span>
+</p>
+</div>
+</section>
+<!-- Filters & Table Section -->
+<section class="glass-card rounded-[2.5rem] p-4 lg:p-8 border border-outline-variant/10">
+<!-- Search & Filters -->
+<div class="flex flex-col lg:flex-row items-center justify-between gap-6 mb-10">
+<div class="relative w-full lg:max-w-md">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-2xl py-4 pl-12 pr-6 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:ring-1 focus:ring-primary/50 transition-all" placeholder="Search conversion history..." type="text"/>
+</div>
+<div class="flex items-center gap-3 overflow-x-auto w-full lg:w-auto pb-2 lg:pb-0">
+<button class="whitespace-nowrap px-6 py-3 rounded-xl bg-surface-container-high text-sm font-medium text-on-surface border border-outline-variant/10 hover:bg-surface-bright transition-all">All Time</button>
+<button class="whitespace-nowrap px-6 py-3 rounded-xl bg-surface-container-low text-sm font-medium text-on-surface-variant border border-outline-variant/5 hover:border-outline-variant transition-all">Today</button>
+<button class="whitespace-nowrap px-6 py-3 rounded-xl bg-surface-container-low text-sm font-medium text-on-surface-variant border border-outline-variant/5 hover:border-outline-variant transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+            Tone
+          </button>
+</div>
+</div>
+<!-- History Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-separate border-spacing-y-4">
+<thead>
+<tr class="text-on-surface-variant">
+<th class="font-label text-[10px] uppercase tracking-widest px-6 pb-2">Date</th>
+<th class="font-label text-[10px] uppercase tracking-widest px-6 pb-2">Original Subject / Snippet</th>
+<th class="font-label text-[10px] uppercase tracking-widest px-6 pb-2">Target Tone</th>
+<th class="font-label text-[10px] uppercase tracking-widest px-6 pb-2 text-right">Action</th>
+</tr>
+</thead>
+<tbody id="history-tbody">
+<tr><td colspan="4" class="text-center py-12 text-on-surface-variant">Loading history...</td></tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination (dynamic) -->
+<div class="mt-10 flex items-center justify-between">
+<p id="pagination-info" class="text-xs text-on-surface-variant">Loading...</p>
+<div id="pagination-btns" class="flex items-center gap-2"></div>
+</div>
+</section>
+</main>
+<!-- Visual Flourish Background Elements -->
+<div class="fixed top-0 right-0 -z-10 w-[800px] h-[800px] bg-primary/5 blur-[150px] rounded-full pointer-events-none translate-x-1/2 -translate-y-1/2"></div>
+<div class="fixed bottom-0 left-0 -z-10 w-[600px] h-[600px] bg-tertiary/5 blur-[120px] rounded-full pointer-events-none -translate-x-1/2 translate-y-1/2"></div>
+</body>
+<script>
+let allHistory = [];
+let currentPage = 1;
+let searchQuery = '';
+let dateFilter = 'all';
+let toneFilter = '';
+const LIMIT = 10;
+let deletedCount = 0; // Track admin-deleted entries
+
+const toneColors = {
+    Professional: 'primary', Formal: 'primary',
+    Friendly: 'secondary', Casual: 'secondary',
+    Urgent: 'tertiary', Apologetic: 'tertiary',
+    Concise: 'on-surface-variant', Persuasive: 'on-surface-variant',
+    Grateful: 'on-surface-variant'
+};
+
+// Auth guard + load user info
+async function initProfile() {
+    const res = await fetch('/api/auth/me');
+    if (!res.ok) { window.location.href = '/login'; return; }
+    const { user } = await res.json();
+
+    if (user.role === 'admin') {
+        window.location.href = '/admin';
+        return;
+    }
+
+    const nameEl = document.querySelector('h2.font-headline');
+    if (nameEl && user.name) nameEl.textContent = user.name;
+    const emailEl = document.getElementById('user-email');
+    if (emailEl && user.email) emailEl.textContent = user.email;
+    const convEl = document.querySelector('.font-headline.text-3xl');
+    if (convEl) convEl.textContent = user.total_conversions || 0;
+
+    fetchAllHistory();
+    initFilters();
+}
+
+async function handleLogout(e) {
+    e.preventDefault();
+    await fetch('/api/auth/logout', { method: 'POST' });
+    window.location.href = '/login';
+}
+
+// Load ALL history once, then filter/paginate client-side
+async function fetchAllHistory() {
+    try {
+        // Fetch up to 500 entries for stats
+        const res = await fetch('/api/history?page=1&limit=500');
+        if (!res.ok) return;
+        const { entries } = await res.json();
+        allHistory = entries || [];
+        computeStats();
+        renderTable();
+    } catch (err) {
+        console.error('Failed to load history:', err);
+    }
+}
+
+function computeStats() {
+    // Count soft-deleted entries
+    deletedCount = allHistory.filter(e => e.source_text === 'DELETED_BY_ADMIN').length;
+    
+    // Show deletion banner if any entries were deleted by admin
+    const bannerEl = document.getElementById('deletion-notice');
+    if (deletedCount > 0) {
+        if (!bannerEl) {
+            const banner = document.createElement('div');
+            banner.id = 'deletion-notice';
+            banner.className = 'mb-8 p-4 rounded-2xl bg-tertiary/10 border border-tertiary/20 flex items-center gap-3';
+            banner.innerHTML = `<span class="material-symbols-outlined text-tertiary text-xl">info</span>
+                <div>
+                    <p class="text-sm font-medium text-tertiary">Administrator Removed ${deletedCount} Conversion${deletedCount === 1 ? '' : 's'}</p>
+                    <p class="text-xs text-tertiary/70 mt-1">Your email refinements have been removed from your history.</p>
+                </div>`;
+            const section = document.querySelector('section.grid.grid-cols-1');
+            if (section) section.parentElement.insertBefore(banner, section);
+        } else {
+            const countSpan = bannerEl.querySelector('p');
+            if (countSpan) countSpan.textContent = `Administrator Removed ${deletedCount} Conversion${deletedCount === 1 ? '' : 's'}`;
+        }
+    } else if (bannerEl) {
+        bannerEl.remove();
+    }
+    
+    // Total words refined (excluding deleted)
+    const totalWords = allHistory.filter(e => e.source_text !== 'DELETED_BY_ADMIN')
+        .reduce((sum, e) => {
+            const words = (e.source_text || '').trim().split(/\s+/).length;
+            return sum + words;
+        }, 0);
+    const wordsEl = document.getElementById('words-refined');
+    if (wordsEl) wordsEl.textContent = totalWords >= 1000 ? (totalWords / 1000).toFixed(1) + 'k' : totalWords;
+
+    // Top tones (excluding deleted)
+    const toneCounts = {};
+    allHistory.filter(e => e.source_text !== 'DELETED_BY_ADMIN').forEach(e => {
+        const t = e.selected_tone || 'Unknown';
+        toneCounts[t] = (toneCounts[t] || 0) + 1;
+    });
+    const total = Object.values(toneCounts).reduce((a, b) => a + b, 0) || 1;
+    const sorted = Object.entries(toneCounts).sort((a, b) => b[1] - a[1]).slice(0, 5);
+    const tonesEl = document.getElementById('top-tones-container');
+    if (tonesEl) {
+        if (sorted.length === 0) {
+            tonesEl.innerHTML = '<span class="text-on-surface-variant text-sm">No data yet</span>';
+        } else {
+            const toneGlows = { primary: '#69f6b8', secondary: '#fcc025', tertiary: '#ff716a' };
+            tonesEl.innerHTML = sorted.map(([tone, count]) => {
+                const pct = Math.round((count / total) * 100);
+                const color = toneColors[tone] || 'on-surface-variant';
+                const glow = toneGlows[color] || '#6d758c';
+                return `<div class="flex items-center gap-3 px-5 py-3 rounded-full bg-${color}/10 border border-${color}/20">
+                    <div class="w-2 h-2 rounded-full bg-${color}" style="box-shadow:0 0 8px ${glow}"></div>
+                    <span class="font-body text-sm font-medium text-${color}">${tone}</span>
+                    <span class="font-label text-xs text-on-surface-variant ml-2">${pct}%</span>
+                </div>`;
+            }).join('');
+        }
+    }
+}
+
+function getFiltered() {
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    return allHistory.filter(e => {
+        // Include soft-deleted records for counting but mark them
+        const matchSearch = !searchQuery || (e.source_text === 'DELETED_BY_ADMIN' ? '[Removed by Admin]' : (e.source_text || '')).toLowerCase().includes(searchQuery.toLowerCase());
+        const date = new Date(e.created_at);
+        const matchDate = dateFilter === 'all' || (dateFilter === 'today' && date >= today);
+        const matchTone = !toneFilter || (e.selected_tone || '').toLowerCase() === toneFilter.toLowerCase();
+        return matchSearch && matchDate && matchTone;
+    });
+}
+
+function renderTable() {
+    const filtered = getFiltered();
+    const total = filtered.length;
+    const pages = Math.ceil(total / LIMIT) || 1;
+    if (currentPage > pages) currentPage = 1;
+    const start = (currentPage - 1) * LIMIT;
+    const pageEntries = filtered.slice(start, start + LIMIT);
+
+    const tbody = document.getElementById('history-tbody');
+    if (!tbody) return;
+
+    if (pageEntries.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="4" class="text-center py-12 text-on-surface-variant">No history found.</td></tr>';
+    } else {
+        tbody.innerHTML = pageEntries.map(e => {
+            const date = new Date(e.created_at);
+            const isDeleted = e.source_text === 'DELETED_BY_ADMIN';
+            const snippet = isDeleted ? '[Removed by Administrator]' : (e.source_text || '').substring(0, 60) + '...';
+            const tone = e.selected_tone || 'Unknown';
+            const color = toneColors[tone] || 'on-surface-variant';
+            const rowClass = isDeleted ? 'opacity-50' : '';
+            const buttonDisabled = isDeleted ? 'opacity-50 cursor-not-allowed' : '';
+            const buttonOnclick = isDeleted ? '' : `onclick="window.location.href='/history-detail?id=${e.id}'"`;
+            
+            return `<tr class="group ${rowClass}">
+                <td class="bg-surface-container-low/50 rounded-l-2xl px-6 py-5 group-hover:bg-surface-container transition-colors">
+                    <p class="text-sm font-medium text-on-surface">${date.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</p>
+                    <p class="text-[11px] text-on-surface-variant">${date.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'})}</p>
+                </td>
+                <td class="bg-surface-container-low/50 px-6 py-5 group-hover:bg-surface-container transition-colors">
+                    <p class="text-sm font-medium ${isDeleted ? 'text-on-surface-variant italic' : 'text-on-surface'} truncate max-w-xs">${snippet}</p>
+                </td>
+                <td class="bg-surface-container-low/50 px-6 py-5 group-hover:bg-surface-container transition-colors">
+                    <span class="px-4 py-1.5 rounded-full text-[11px] font-bold ${isDeleted ? 'bg-tertiary/10 text-tertiary' : `bg-${color}/10 text-${color}`} uppercase tracking-tighter">${isDeleted ? 'Removed' : tone}</span>
+                </td>
+                <td class="bg-surface-container-low/50 rounded-r-2xl px-6 py-5 text-right group-hover:bg-surface-container transition-colors">
+                    <button ${buttonOnclick} class="px-5 py-2 rounded-xl bg-surface-bright text-xs font-bold text-primary border border-primary/10 hover:bg-primary hover:text-on-primary-container transition-all ${buttonDisabled}" ${isDeleted ? 'disabled' : ''}>View Details</button>
+                </td>
+            </tr>`;
+        }).join('');
+    }
+
+    // Pagination info
+    const infoEl = document.getElementById('pagination-info');
+    if (infoEl) infoEl.textContent = total === 0 ? 'No results' : `Showing ${start + 1}–${Math.min(start + LIMIT, total)} of ${total} results`;
+
+    // Pagination buttons
+    const btnsEl = document.getElementById('pagination-btns');
+    if (btnsEl && pages > 1) {
+        let html = `<button onclick="changePage(${currentPage - 1})" ${currentPage===1?'disabled':''} class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors disabled:opacity-30"><span class="material-symbols-outlined">chevron_left</span></button>`;
+        for (let i = 1; i <= pages; i++) {
+            html += `<button onclick="changePage(${i})" class="w-10 h-10 rounded-xl ${i===currentPage?'bg-primary/20 text-primary font-bold':'bg-surface-container-low text-on-surface-variant hover:text-primary'} text-sm">${i}</button>`;
+        }
+        html += `<button onclick="changePage(${currentPage + 1})" ${currentPage===pages?'disabled':''} class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors disabled:opacity-30"><span class="material-symbols-outlined">chevron_right</span></button>`;
+        btnsEl.innerHTML = html;
+    } else if (btnsEl) {
+        btnsEl.innerHTML = '';
+    }
+}
+
+function changePage(p) {
+    const filtered = getFiltered();
+    const pages = Math.ceil(filtered.length / LIMIT) || 1;
+    if (p < 1 || p > pages) return;
+    currentPage = p;
+    renderTable();
+}
+
+// Search
+function initFilters() {
+    // Search box
+    const searchInput = document.querySelector('input[placeholder="Search conversion history..."]');
+    if (searchInput) {
+        searchInput.addEventListener('input', e => {
+            searchQuery = e.target.value;
+            currentPage = 1;
+            renderTable();
+        });
+    }
+
+    // Date filter buttons
+    document.querySelectorAll('button.whitespace-nowrap').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const label = btn.textContent.trim().toLowerCase();
+            if (label === 'all time') { dateFilter = 'all'; toneFilter = ''; }
+            else if (label === 'today') { dateFilter = 'today'; }
+            currentPage = 1;
+            // Visual active state
+            document.querySelectorAll('button.whitespace-nowrap').forEach(b => {
+                b.classList.remove('bg-surface-container-high', 'text-on-surface');
+                b.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+            });
+            btn.classList.add('bg-surface-container-high', 'text-on-surface');
+            renderTable();
+        });
+    });
+}
+
+initProfile();
+</script>
+
+</html>

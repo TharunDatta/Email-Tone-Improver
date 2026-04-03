@@ -1,9 +1,35 @@
 {
+  "version": 2,
+  "buildCommand": "npm install",
+  "installCommand": "npm install",
+  "env": {
+    "NODE_ENV": "production",
+    "GEMINI_API_KEY": "@gemini_api_key",
+    "SUPABASE_URL": "@supabase_url",
+    "SUPABASE_ANON_KEY": "@supabase_anon_key",
+    "JWT_SECRET": "@jwt_secret",
+    "ADMIN_EMAIL": "@admin_email",
+    "ADMIN_PASSWORD_HASH": "@admin_password_hash",
+    "FRONTEND_URL": "@frontend_url"
+  },
+  "functions": {
+    "server.js": {
+      "memory": 1024,
+      "maxDuration": 120
+    }
+  },
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1" },
-    { "src": "/editor", "dest": "/editor.html" },
-    { "src": "/how-it-works", "dest": "/how-it-works.html" },
-    { "src": "/privacy-policy", "dest": "/privacy-policy.html" },
-    { "src": "/terms", "dest": "/terms.html" }
+    { "src": "/api/(.*)", "dest": "/server.js" },
+    { "src": "/", "dest": "/server.js" },
+    { "src": "/editor", "dest": "/server.js" },
+    { "src": "/how-it-works", "dest": "/server.js" },
+    { "src": "/privacy-policy", "dest": "/server.js" },
+    { "src": "/terms", "dest": "/server.js" },
+    { "src": "/login", "dest": "/server.js" },
+    { "src": "/register", "dest": "/server.js" },
+    { "src": "/profile", "dest": "/server.js" },
+    { "src": "/history-detail", "dest": "/server.js" },
+    { "src": "/admin-login", "dest": "/server.js" },
+    { "src": "/admin", "dest": "/server.js" }
   ]
 }
