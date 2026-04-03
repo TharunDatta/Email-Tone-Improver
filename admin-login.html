@@ -89,7 +89,7 @@
         }
     </style>
 </head>
-<body class="bg-background text-on-surface font-body min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+<body class="bg-background text-on-surface font-body min-h-screen flex flex-col items-center justify-center relative overflow-y-auto">
 <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
 <div class="absolute -top-[20%] -left-[10%] w-[60%] h-[60%] bg-primary/5 blur-[120px] rounded-full"></div>
 <div class="absolute top-[40%] -right-[15%] w-[50%] h-[50%] bg-secondary/5 blur-[120px] rounded-full"></div>
@@ -116,14 +116,6 @@
 <div class="flex items-center gap-3 bg-surface-container-low px-4 py-2.5 rounded-lg">
 <div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#69f6b8]"></div>
 <span class="font-label text-label-md text-primary">Systems Nominal</span>
-</div>
-<div class="flex items-center gap-3 bg-surface-container-low px-4 py-2.5 rounded-lg">
-<span class="material-symbols-outlined text-outline text-sm" data-icon="shield">shield</span>
-<span class="font-label text-label-md text-on-surface-variant">Lumina Encryption Active</span>
-</div>
-<div class="flex items-center gap-3 bg-surface-container-low px-4 py-2.5 rounded-lg">
-<span class="material-symbols-outlined text-outline text-sm" data-icon="dns">dns</span>
-<span class="font-label text-label-md text-on-surface-variant">Node 0x7F2 Alpha</span>
 </div>
 </div>
 </div>
@@ -166,13 +158,6 @@
                             <span class="material-symbols-outlined transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
 </button>
 </div>
-<div class="flex justify-between items-center pt-2">
-<a class="text-xs text-outline hover:text-primary transition-colors font-medium" href="#">Lost credentials?</a>
-<div class="flex items-center gap-2">
-<span class="w-1.5 h-1.5 rounded-full bg-error animate-pulse"></span>
-<span class="text-[10px] uppercase tracking-widest text-outline font-bold">Encrypted Link</span>
-</div>
-</div>
 </form>
 </div>
 <div class="mt-8 flex justify-center gap-4 text-outline-variant opacity-40">
@@ -182,7 +167,7 @@
 </div>
 </div>
 </div>
-<footer class="fixed bottom-0 w-full py-8 px-12 flex flex-col md:flex-row justify-between items-center text-on-surface-variant font-label text-[10px] tracking-widest uppercase gap-4 pointer-events-none">
+<footer class="fixed bottom-0 w-full py-8 px-12 flex flex-col md:flex-row justify-between items-center text-on-surface-variant font-label text-[10px] tracking-widest uppercase gap-4">
 <div>© 2024 Ethereal Tone AI. Built for Digital Curators.</div>
 <div class="flex gap-8 pointer-events-auto">
 <a class="hover:text-primary transition-colors cursor-pointer" href="/privacy-policy">Privacy Policy</a>
