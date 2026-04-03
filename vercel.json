@@ -2,16 +2,6 @@
   "version": 2,
   "buildCommand": "npm install",
   "installCommand": "npm install",
-  "env": {
-    "NODE_ENV": "production",
-    "GEMINI_API_KEY": "@gemini_api_key",
-    "SUPABASE_URL": "@supabase_url",
-    "SUPABASE_ANON_KEY": "@supabase_anon_key",
-    "JWT_SECRET": "@jwt_secret",
-    "ADMIN_EMAIL": "@admin_email",
-    "ADMIN_PASSWORD_HASH": "@admin_password_hash",
-    "FRONTEND_URL": "@frontend_url"
-  },
   "functions": {
     "server.js": {
       "memory": 1024,
