@@ -2,7 +2,9 @@
 
 An AI-powered web application that analyzes and rewrites emails in multiple signature tones using Google's Gemini API. Features user authentication, conversation history, and an admin panel.
 
-🌐 **Live Demo:** [email-tone-improver.vercel.app](https://email-tone-improver.vercel.app)
+🌐 **Live Demo (User):** [email-tone-improver.vercel.app](https://email-tone-improver.vercel.app)
+🔐 **Admin Dashboard (admin‑only):** [email-tone-improver.vercel.app/admin-login](https://email-tone-improver.vercel.app/admin-login)
+
 
 [![Node.js](https://img.shields.io/badge/Node.js-16+-green)](https://nodejs.org/)
 [![Express](https://img.shields.io/badge/Express-4.x-blue)](https://expressjs.com/)
