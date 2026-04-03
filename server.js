@@ -96,8 +96,12 @@ app.get('/history-detail', (req, res) => res.sendFile(path.join(__dirname, 'hist
 app.get('/admin-login', (req, res) => res.sendFile(path.join(__dirname, 'admin-login.html')));
 app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'admin.html')));
 
-// Start Server
-app.listen(PORT, () => {
-    console.log(`\n🚀 Ethereal Tone running at http://localhost:${PORT}`);
-    console.log(`📝 Open the editor at http://localhost:${PORT}/editor\n`);
-});
+// Start Server locally (Vercel provides the serverless runtime)
+if (!process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`\n🚀 Ethereal Tone running at http://localhost:${PORT}`);
+        console.log(`📝 Open the editor at http://localhost:${PORT}/editor\n`);
+    });
+}
+
+export default app;

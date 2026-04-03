@@ -1,25 +1,9 @@
 {
   "version": 2,
-  "buildCommand": "npm install",
-  "installCommand": "npm install",
-  "functions": {
-    "server.js": {
-      "memory": 1024,
-      "maxDuration": 120
-    }
-  },
+  "builds": [
+    { "src": "server.js", "use": "@vercel/node" }
+  ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/server.js" },
-    { "src": "/", "dest": "/server.js" },
-    { "src": "/editor", "dest": "/server.js" },
-    { "src": "/how-it-works", "dest": "/server.js" },
-    { "src": "/privacy-policy", "dest": "/server.js" },
-    { "src": "/terms", "dest": "/server.js" },
-    { "src": "/login", "dest": "/server.js" },
-    { "src": "/register", "dest": "/server.js" },
-    { "src": "/profile", "dest": "/server.js" },
-    { "src": "/history-detail", "dest": "/server.js" },
-    { "src": "/admin-login", "dest": "/server.js" },
-    { "src": "/admin", "dest": "/server.js" }
+    { "src": "/(.*)", "dest": "/server.js" }
   ]
 }
