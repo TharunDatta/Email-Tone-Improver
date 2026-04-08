@@ -11,7 +11,7 @@ dotenv.config();
 import handler from './api/enhance.js';
 import { register, login, logout, me } from './api/auth.js';
 import { saveHistory, getHistory, getHistoryDetail } from './api/history.js';
-import { adminLogin, getUsers, getStats, getUserHistory, deleteHistoryEntry, deleteUser, getToneStats } from './api/admin.js';
+import { adminLogin, getUsers, getStats, getUserHistory, deleteHistoryEntry, deleteUser, getToneStats, resetUserPassword } from './api/admin.js';
 import { authenticateToken, authenticateAdminToken, requireAdmin, apiLimiter, authLimiter, enhanceLimiter } from './api/middleware.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -79,6 +79,7 @@ app.post('/api/admin/login', authLimiter, adminLogin);
 app.get('/api/admin/users', authenticateAdminToken, requireAdmin, getUsers);
 app.get('/api/admin/stats', authenticateAdminToken, requireAdmin, getStats);
 app.get('/api/admin/user-history/:userId', authenticateAdminToken, requireAdmin, getUserHistory);
+app.post('/api/admin/user/:userId/password', authenticateAdminToken, requireAdmin, resetUserPassword);
 app.delete('/api/admin/history/:id', authenticateAdminToken, requireAdmin, deleteHistoryEntry);
 app.delete('/api/admin/user/:userId', authenticateAdminToken, requireAdmin, deleteUser);
 app.get('/api/admin/tone-stats', authenticateAdminToken, requireAdmin, getToneStats);
@@ -100,7 +101,8 @@ app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'admin.html'))
 if (!process.env.VERCEL) {
     app.listen(PORT, () => {
         console.log(`\n🚀 Ethereal Tone running at http://localhost:${PORT}`);
-        console.log(`📝 Open the editor at http://localhost:${PORT}/editor\n`);
+        console.log(`📝 User Login: http://localhost:${PORT}/login`);
+        console.log(`🛡️  Admin Login: http://localhost:${PORT}/admin-login\n`);
     });
 }
 

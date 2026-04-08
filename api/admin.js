@@ -1,13 +1,19 @@
 // api/admin.js — Admin handlers with soft delete & security fixes
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import { getAllUsers, countUsers, decrementConversions } from '../models/User.js';
+import { getAllUsers, countUsers, decrementConversions, updateUserPassword } from '../models/User.js';
 import { countHistory } from '../models/History.js';
 import { supabase } from '../db.js';
 
 const JWT_SECRET = process.env.JWT_SECRET;
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
 const ADMIN_PASSWORD_HASH = process.env.ADMIN_PASSWORD_HASH;
+
+const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+function isUuid(value) {
+    return typeof value === 'string' && uuidRegex.test(value);
+}
 
 if (!JWT_SECRET) {
     throw new Error('JWT_SECRET not configured');
@@ -99,6 +105,29 @@ export async function getUserHistory(req, res) {
     } catch (err) {
         console.error('Get user history error:', err);
         return res.status(500).json({ error: 'Failed to fetch user history.' });
+    }
+}
+
+// Reset user password (admin only)
+export async function resetUserPassword(req, res) {
+    try {
+        const { userId } = req.params;
+        const { password } = req.body;
+
+        if (!isUuid(userId)) {
+            return res.status(400).json({ error: 'Invalid user ID.' });
+        }
+
+        if (!password || typeof password !== 'string' || password.length < 12) {
+            return res.status(400).json({ error: 'Password must be at least 12 characters.' });
+        }
+
+        await updateUserPassword(userId, password);
+
+        return res.status(200).json({ message: 'Password updated.' });
+    } catch (err) {
+        console.error('Reset password error:', err);
+        return res.status(500).json({ error: 'Failed to reset password.' });
     }
 }
 

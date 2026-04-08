@@ -227,11 +227,34 @@
   </div>
 </div>
 
+<!-- Password Reset Modal -->
+<div id="password-modal" class="hidden fixed inset-0 z-[998] flex items-center justify-center bg-black/60 backdrop-blur-sm">
+  <div class="bg-surface-container-high rounded-2xl p-8 max-w-sm w-full mx-4 border border-outline-variant/20 shadow-2xl">
+    <h3 class="font-headline text-lg font-bold mb-1">Reset Password</h3>
+    <p class="text-on-surface-variant text-sm mb-4">Set a temporary password for <span id="password-modal-name">user</span>.</p>
+    <div class="relative mb-2">
+      <input id="password-modal-input" type="password" class="w-full bg-surface-container-low border border-outline-variant/20 rounded-xl py-3 pl-4 pr-12 text-sm text-on-surface placeholder:text-on-surface-variant/50 focus:ring-1 focus:ring-primary/40 outline-none" placeholder="Temporary password" />
+      <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors" onclick="togglePasswordInput()">
+        <span id="password-modal-toggle-icon" class="material-symbols-outlined text-base">visibility</span>
+      </button>
+    </div>
+    <div class="flex items-center justify-between mb-4">
+      <button type="button" onclick="generateTempPassword()" class="text-xs text-primary hover:text-primary-dim transition-colors">Generate</button>
+      <span class="text-[10px] uppercase tracking-widest text-on-surface-variant">Min 12 chars</span>
+    </div>
+    <div class="flex gap-3">
+      <button onclick="closePasswordModal()" class="flex-1 py-2.5 rounded-xl border border-outline-variant text-on-surface-variant hover:bg-surface-bright transition-colors text-sm font-semibold">Cancel</button>
+      <button onclick="submitPasswordReset()" class="flex-1 py-2.5 rounded-xl bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 transition-colors text-sm font-semibold">Set Password</button>
+    </div>
+  </div>
+</div>
+
 <script>
 // ── State ─────────────────────────────────────
 let _allUsers = [];
 let _currentUserId = null;
 let _modalCallback = null;
+let _passwordUserId = null;
 
 // ── Auth Guard ────────────────────────────────
 (async () => {
@@ -249,6 +272,29 @@ let _modalCallback = null;
 
 // ── Helpers ───────────────────────────────────
 function setEl(id, val) { const e = document.getElementById(id); if (e) e.textContent = val; }
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+function stripHtml(value) {
+  const tmp = document.createElement('div');
+  tmp.innerHTML = value || '';
+  return tmp.textContent || tmp.innerText || '';
+}
+function toggleHistoryDetail(detailId, iconId) {
+  const detailEl = document.getElementById(detailId);
+  if (!detailEl) return;
+  const isHidden = detailEl.classList.contains('hidden');
+  detailEl.classList.toggle('hidden', !isHidden);
+  if (iconId) {
+    const iconEl = document.getElementById(iconId);
+    if (iconEl) iconEl.textContent = isHidden ? 'expand_less' : 'expand_more';
+  }
+}
 function showToast(msg, type = 'success') {
   const t = document.getElementById('toast');
   t.textContent = msg;
@@ -264,6 +310,66 @@ function openModal(title, msg, cb) {
   document.getElementById('confirm-modal').classList.remove('hidden');
 }
 function closeModal() { document.getElementById('confirm-modal').classList.add('hidden'); }
+function openPasswordModal(userId, name) {
+  _passwordUserId = userId;
+  const nameEl = document.getElementById('password-modal-name');
+  const inputEl = document.getElementById('password-modal-input');
+  const iconEl = document.getElementById('password-modal-toggle-icon');
+  if (nameEl) nameEl.textContent = name || 'user';
+  if (inputEl) {
+    inputEl.value = '';
+    inputEl.type = 'password';
+    inputEl.focus();
+  }
+  if (iconEl) iconEl.textContent = 'visibility';
+  document.getElementById('password-modal').classList.remove('hidden');
+}
+function closePasswordModal() {
+  _passwordUserId = null;
+  document.getElementById('password-modal').classList.add('hidden');
+}
+function togglePasswordInput() {
+  const inputEl = document.getElementById('password-modal-input');
+  const iconEl = document.getElementById('password-modal-toggle-icon');
+  if (!inputEl || !iconEl) return;
+  const isPassword = inputEl.type === 'password';
+  inputEl.type = isPassword ? 'text' : 'password';
+  iconEl.textContent = isPassword ? 'visibility_off' : 'visibility';
+}
+function generateTempPassword() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%';
+  let pwd = '';
+  for (let i = 0; i < 14; i += 1) {
+    pwd += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  const inputEl = document.getElementById('password-modal-input');
+  if (inputEl) {
+    inputEl.value = pwd;
+    inputEl.type = 'text';
+    const iconEl = document.getElementById('password-modal-toggle-icon');
+    if (iconEl) iconEl.textContent = 'visibility_off';
+  }
+}
+async function submitPasswordReset() {
+  const inputEl = document.getElementById('password-modal-input');
+  const password = inputEl ? inputEl.value.trim() : '';
+  if (!password || password.length < 12) {
+    showToast('Password must be at least 12 characters', 'error');
+    return;
+  }
+  try {
+    const r = await fetch(`/api/admin/user/${_passwordUserId}/password`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password })
+    });
+    if (!r.ok) throw new Error();
+    closePasswordModal();
+    showToast('Temporary password set');
+  } catch {
+    showToast('Failed to reset password', 'error');
+  }
+}
 function updateTime() {
   const now = new Date();
   const s = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
@@ -365,6 +471,7 @@ async function selectUser(userId) {
   const detailEl = document.getElementById('um-detail');
   const initials = (user.name || user.email || 'U').trim().split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
   const joined = new Date(user.created_at).toLocaleDateString('en-US', { month:'long', day:'numeric', year:'numeric' });
+  const safeName = (user.name || user.email || 'User').replace(/'/g, "");
 
   detailEl.innerHTML = `
     <div>
@@ -380,10 +487,16 @@ async function selectUser(userId) {
             <span class="text-xs text-on-surface-variant">Joined ${joined}</span>
           </div>
         </div>
-        <button onclick="confirmDeleteUser('${user.id}', '${(user.name || user.email || '').replace(/'/g, "")}')"
-          class="flex items-center gap-2 px-4 py-2 text-sm text-tertiary border border-tertiary/30 rounded-xl hover:bg-tertiary/10 transition-colors flex-shrink-0 font-semibold">
-          <span class="material-symbols-outlined text-base">person_remove</span>Delete User
-        </button>
+        <div class="flex flex-wrap gap-2 flex-shrink-0">
+          <button onclick="openPasswordModal('${user.id}', '${safeName}')"
+            class="flex items-center gap-2 px-4 py-2 text-sm text-on-surface-variant border border-outline-variant/30 rounded-xl hover:bg-surface-bright transition-colors font-semibold" title="Reset password">
+            <span class="material-symbols-outlined text-base">more_vert</span>Reset Password
+          </button>
+          <button onclick="confirmDeleteUser('${user.id}', '${safeName}')"
+            class="flex items-center gap-2 px-4 py-2 text-sm text-tertiary border border-tertiary/30 rounded-xl hover:bg-tertiary/10 transition-colors font-semibold">
+            <span class="material-symbols-outlined text-base">person_remove</span>Delete User
+          </button>
+        </div>
       </div>
       <!-- History -->
       <div>
@@ -416,19 +529,49 @@ function renderUserHistory(history, userId) {
   }
   el.innerHTML = history.map(h => {
     const date = new Date(h.created_at).toLocaleString('en-US', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' });
-    const snippet = (h.source_text || '').slice(0, 80) + (h.source_text?.length > 80 ? '…' : '');
-    return `<div id="hist-${h.id}" class="flex items-start gap-3 p-4 rounded-xl bg-surface-container border border-outline-variant/10 hover:border-outline-variant/25 transition-all group">
-      <div class="flex-1 min-w-0">
-        <div class="flex items-center gap-2 mb-1 flex-wrap">
-          <span class="text-[10px] font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full uppercase tracking-wider">${h.selected_tone || 'Unknown'}</span>
-          <span class="text-[10px] text-on-surface-variant">${date}</span>
+    const rawSource = typeof h.source_text === 'string' ? h.source_text : '';
+    const safeSource = escapeHtml(rawSource);
+    const snippet = safeSource.length > 80 ? `${safeSource.slice(0, 80)}...` : safeSource;
+    const improvedText = escapeHtml(stripHtml(h.improved_email || ''));
+    const tone = escapeHtml(h.selected_tone || 'Unknown');
+    const clarity = typeof h.clarity_score === 'number' ? Math.round(h.clarity_score) : null;
+    const detailId = `hist-detail-${h.id}`;
+    const toggleId = `hist-toggle-${h.id}`;
+    const clarityChip = clarity !== null
+      ? `<span class="text-[10px] text-on-surface-variant">Clarity ${clarity}</span>`
+      : '';
+
+    return `<div id="hist-${h.id}" class="p-4 rounded-xl bg-surface-container border border-outline-variant/10 hover:border-outline-variant/25 transition-all group cursor-pointer" onclick="toggleHistoryDetail('${detailId}', '${toggleId}')">
+      <div class="flex items-start gap-3">
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 mb-1 flex-wrap">
+            <span class="text-[10px] font-bold text-primary bg-primary/10 px-2.5 py-0.5 rounded-full uppercase tracking-wider">${tone}</span>
+            <span class="text-[10px] text-on-surface-variant">${date}</span>
+            ${clarityChip}
+          </div>
+          <p class="text-xs text-on-surface/70 italic mt-1">"${snippet || '-'}"</p>
         </div>
-        <p class="text-xs text-on-surface/70 italic mt-1">"${snippet}"</p>
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <button type="button" title="Toggle details" onclick="toggleHistoryDetail('${detailId}', '${toggleId}'); event.stopPropagation();"
+            class="opacity-0 group-hover:opacity-100 w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-bright transition-all">
+            <span id="${toggleId}" class="material-symbols-outlined text-base">expand_more</span>
+          </button>
+          <button onclick="confirmDeleteHistory('${h.id}', '${userId}'); event.stopPropagation();" title="Delete entry"
+            class="opacity-0 group-hover:opacity-100 w-8 h-8 rounded-lg flex items-center justify-center text-tertiary hover:bg-tertiary/10 transition-all">
+            <span class="material-symbols-outlined text-base">delete</span>
+          </button>
+        </div>
       </div>
-      <button onclick="confirmDeleteHistory('${h.id}', '${userId}')" title="Delete entry"
-        class="opacity-0 group-hover:opacity-100 flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-tertiary hover:bg-tertiary/10 transition-all">
-        <span class="material-symbols-outlined text-base">delete</span>
-      </button>
+      <div id="${detailId}" class="hidden mt-3 border-t border-outline-variant/10 pt-3 space-y-3">
+        <div>
+          <p class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Original</p>
+          <p class="text-xs text-on-surface/80 whitespace-pre-wrap break-words">${safeSource || '-'}</p>
+        </div>
+        <div>
+          <p class="text-[10px] uppercase tracking-widest text-on-surface-variant mb-1">Output</p>
+          <p class="text-xs text-on-surface/80 whitespace-pre-wrap break-words">${improvedText || '-'}</p>
+        </div>
+      </div>
     </div>`;
   }).join('');
 }

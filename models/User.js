@@ -117,3 +117,16 @@ export async function countUsers() {
     if (error) throw error;
     return count || 0;
 }
+
+export async function updateUserPassword(userId, newPassword) {
+    if (!userId || typeof userId !== 'string') throw new Error('Invalid user ID');
+    if (!newPassword || typeof newPassword !== 'string') throw new Error('Invalid password');
+
+    const password_hash = await bcrypt.hash(newPassword, 10);
+    const { error } = await supabase
+        .from('users')
+        .update({ password_hash })
+        .eq('id', userId);
+
+    if (error) throw error;
+}
