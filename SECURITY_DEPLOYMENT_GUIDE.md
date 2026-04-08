@@ -82,6 +82,7 @@ Create these in Vercel dashboard (Settings → Environment Variables):
 GEMINI_API_KEY         = (your Google Gemini API key)
 SUPABASE_URL           = (your Supabase project URL)
 SUPABASE_ANON_KEY      = (your Supabase anonymous key)
+SUPABASE_SERVICE_ROLE_KEY = (server-only key, required when RLS is enabled)
 JWT_SECRET             = (32+ character random string - from above)
 ADMIN_EMAIL            = admin@etherealtone.ai
 ADMIN_PASSWORD_HASH    = (bcrypt hash from above - $2a$10$...)
@@ -177,6 +178,8 @@ Write-Output $response.StatusCode
 ## 🔒 SUPABASE SECURITY SETUP
 
 ### Step 1: Enable Row Level Security (RLS)
+Because this app does not use Supabase Auth, you must use the service role key on the server.
+RLS protects the database from public access while server requests continue to work.
 Copy this SQL into Supabase SQL Editor and run it:
 
 ```sql

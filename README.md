@@ -113,6 +113,21 @@ Open **http://localhost:3000** in your browser.
 
 ---
 
+## 📄 Pages
+
+| URL | Purpose |
+|-----|---------|
+| `/` | Landing page |
+| `/login` | User login |
+| `/register` | User registration |
+| `/editor` | Tone editor (auth) |
+| `/profile` | User profile & history |
+| `/history-detail` | Single conversion detail |
+| `/admin-login` | Admin login |
+| `/admin` | Admin dashboard |
+
+---
+
 ## ✨ Features
 
 ### 🎯 Core Features
