@@ -20,6 +20,9 @@ const __dirname = dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Trust Vercel proxy headers for accurate rate limiting and client IP
+app.set('trust proxy', 1);
+
 // Prevent crashes from unhandled promise rejections
 process.on('unhandledRejection', (err) => {
     console.error('⚠️  Unhandled rejection:', err.message);
